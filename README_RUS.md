@@ -33,7 +33,7 @@ $greenApi = new GreenApiClient( ID_INSTANCE, API_TOKEN_INSTANCE );
 ### Отправка текстового сообщения на номер WhatsApp
 
 ```
-$result = $greenApi->sending->sendMessage('79001234567@g.us', 'Message text');
+$result = $greenApi->sending->sendMessage('11001234567@g.us', 'Message text');
 ```
 
 Ссылка на пример: [sendTextMessage.php](https://github.com/green-api/whatsapp-api-client-php/blob/master/examples/sendTextMessage.php)
@@ -51,7 +51,7 @@ define( "API_TOKEN_INSTANCE", getenv("API_TOKEN_INSTANCE") );
 
 ```
 $result = $greenApi->sending->sendFileByUrl(
-        '79001234567@c.us', 'https://www.google.ru/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png',
+        '11001234567@c.us', 'https://www.google.ru/images/branding/googlelogo/1x/googlelogo_color_272x92dp.png',
         'googlelogo_color_272x92dp.png', 'Google logo');
 ```
 
@@ -71,7 +71,7 @@ result = greenAPI.sending.sendFileByUpload('120363025955348359@g.us',
 
 ```
 $chatIds = [
-	'79001234567@c.us'
+	'11001234567@c.us'
 ];
 $resultCreate = $greenApi->groups->createGroup('GroupName', $chatIds );
 

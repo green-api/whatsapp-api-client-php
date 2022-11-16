@@ -9,7 +9,7 @@ define( "API_TOKEN_INSTANCE", getenv("API_TOKEN_INSTANCE") );
 $greenApi = new GreenApiClient( ID_INSTANCE, API_TOKEN_INSTANCE );
 
 $chatIds = [
-	'79001234567@c.us'
+	'11001234567@c.us'
 ];
 
 $resultCreate = $greenApi->groups->createGroup('GroupName', $chatIds );
