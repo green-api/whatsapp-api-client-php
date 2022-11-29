@@ -1,4 +1,7 @@
 # whatsapp-api-client-php
+[![Total Downloads](https://poser.pugx.org/green-api/whatsapp-api-client-php/downloads?format=flat-square)](https://packagist.org/packages/green-api/whatsapp-api-client-php)
+[![Downloads per month](https://img.shields.io/packagist/dm/green-api/whatsapp-api-client-php.svg?style=flat-square)](https://packagist.org/packages/green-api/whatsapp-api-client-php)
+[![License](https://img.shields.io/badge/license-Apache%202.0-red.svg?style=flat-square)](https://packagist.org/packages/green-api/whatsapp-api-client-php)
 
 - [Документация на русском языке](README_RUS.md)
 
