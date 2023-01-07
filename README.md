@@ -13,7 +13,7 @@ You can find REST API documentation by [url](https://green-api.com/en/docs/api/)
 
 ## Installation
 
-Via Composer:
+Via [Composer](https://getcomposer.org):
 
 ```bash
 composer require green-api/whatsapp-api-client-php
@@ -22,11 +22,17 @@ composer require green-api/whatsapp-api-client-php
 ## Import
 
 ```
-require 'vendor\autoload.php';
+require './vendor/autoload.php';
 ```
 ## Authorization
 
 To send a message or to execute some other Green-API method, you have to have the WhatsApp account in the phone application to be authorized. To authorize your account please go to the [personal area](https://console.green-api.com) and scan a QR-code using the WhatsApp application.
+
+## Running index.php
+
+```
+php -S localhost:8080
+```
 
 ## Examples
 
@@ -47,7 +53,7 @@ Example url: [sendTextMessage.php](https://github.com/green-api/whatsapp-api-cli
 Please note that keys can be obtained from environment variables:
 ```
 <?php
-require 'vendor/autoload.php';
+require './vendor/autoload.php';
 
 define( "ID_INSTANCE", getenv("ID_INSTANCE" ));
 define( "API_TOKEN_INSTANCE", getenv("API_TOKEN_INSTANCE") );
