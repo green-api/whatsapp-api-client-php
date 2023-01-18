@@ -93,7 +93,7 @@ class Groups {
 	}
 
 	/**
-	 * The method removes a participant from group chat administartion rights.
+	 * The method removes a participant from group chat administration rights.
 	 *
 	 * @param string $groupId
 	 * @param string $participantChatId
