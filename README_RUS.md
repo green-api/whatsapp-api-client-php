@@ -10,7 +10,7 @@ PHP библиотека для интеграции с мессенджером
 Документация к REST API находится по [ссылке](https://green-api.com/en/docs/api/). Библиотека является оберткой к REST API, поэтому документация по ссылке выше применима и к самой библиотеке.
 
 ## Установка
-Через Composer:
+Через [Composer](https://getcomposer.org):
 
 ```bash
 composer require green-api/whatsapp-api-client-php
@@ -19,11 +19,17 @@ composer require green-api/whatsapp-api-client-php
 ## Import 
 
 ```
-require 'vendor\autoload.php';
+require './vendor/autoload.php';
 ```
 ## Авторизация 
 
 Чтобы отправить сообщение или выполнить другой метод Green-API, аккаунт WhatsApp в приложении телефона должен быть в авторизованном состоянии. Для авторизации аккаунта перейдите в [личный кабинет](https://console.green-api.com) и сканируйте QR-код с использованием приложения WhatsApp.
+
+## Запуск index.php
+
+```
+php -S localhost:8080
+```
 
 ## Примеры
 
@@ -44,7 +50,7 @@ $result = $greenApi->sending->sendMessage('11001234567@g.us', 'Message text');
 Обратите внимание, что ключи можно получать из переменных среды:
 ```
 <?php
-require 'vendor/autoload.php';
+require './vendor/autoload.php';
 
 define( "ID_INSTANCE", getenv("ID_INSTANCE" ));
 define( "API_TOKEN_INSTANCE", getenv("API_TOKEN_INSTANCE") );
