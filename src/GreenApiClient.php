@@ -91,11 +91,12 @@ class GreenApiClient {
 	 * @param array|null $payload
 	 * @param bool $is_files
 	 * @param string|null $mime_type
+	 * @param string|null $path
 	 *
 	 * @return stdClass
 	 */
 	public function request( string $method, string $url, array $payload = null, bool $is_files = false,
-		string $mime_type = null
+		string $mime_type = null, string $path = null
 	): stdClass {
 		$url = str_replace( '{{host}}', $this->host, $url );
 		$url = str_replace( '{{idInstance}}', $this->idInstance, $url );
@@ -137,6 +138,18 @@ class GreenApiClient {
 			case 'DELETE':
 				curl_setopt( $curl, CURLOPT_CUSTOMREQUEST, 'DELETE' );
 				curl_setopt( $curl, CURLOPT_POSTFIELDS, $payloadData );
+				break;
+			case 'POST_BINARY':
+				$mime_type = mime_content_type( $path );
+				$headers = array( 'Content-Type: ' . $mime_type );
+				$filesize = filesize($path);
+				$stream = fopen($path, 'r');
+				curl_setopt( $curl, CURLOPT_PUT, true );
+				curl_setopt( $curl, CURLOPT_CUSTOMREQUEST, 'POST' );
+				curl_setopt( $curl, CURLOPT_INFILE, $stream );
+				curl_setopt( $curl, CURLOPT_INFILESIZE, $filesize );
+				curl_setopt( $curl, CURLOPT_HTTP_VERSION , CURL_HTTP_VERSION_1_1 );
+				curl_setopt( $curl, CURLOPT_HTTPHEADER, $headers );
 				break;
 			default:
 				if ( ! empty( $payload ) ) {

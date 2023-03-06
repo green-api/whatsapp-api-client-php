@@ -398,4 +398,19 @@ class Sending {
 		return $this->greenApi->request( 'POST',
 			'{{host}}/waInstance{{idInstance}}/ForwardMessages/{{apiTokenInstance}}', $requestBody );
 	}
+
+	/**
+	 * The method is aimed for upload binary file.
+	 *
+	 * @param string $path
+	 *
+	 * @return stdClass
+	 * @link https://green-api.com/en/docs/api/sending/UploadFile/
+	 */
+	public function uploadFile(
+		string $path): stdClass {
+
+		return $this->greenApi->request( 'POST_BINARY',
+			'{{host}}/waInstance{{idInstance}}/UploadFile/{{apiTokenInstance}}', null, false, null, $path );
+	}
 }
