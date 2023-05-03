@@ -5,7 +5,7 @@
 
 - [Документация на русском языке](README_RUS.md)
 
-PHP library for integration with WhatsApp messenger via API of [green-api.com](https://green-api.com) service. To use the library you have to get a registration token and an account id in the [personal area](https://console.green-api.com). There is a free developer account tariff plan.
+PHP library for integration with WhatsApp messenger via API of [green-api.com](https://green-api.com/en/) service. To use the library you have to get a registration token and an account id in the [personal area](https://console.green-api.com). There is a free developer account tariff plan.
 
 ## API
 
