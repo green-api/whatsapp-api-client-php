@@ -23,6 +23,7 @@ use stdClass;
 
 class GreenApiClient {
 	private $host;
+    private $media;
 	private $idInstance;
 	private $apiTokenInstance;
 
@@ -67,11 +68,12 @@ class GreenApiClient {
 	 */
 	public $webhooks;
 
-	public function __construct( $idInstance, $apiTokenInstance, $host = 'https://api.green-api.com' ) {
+	public function __construct( $idInstance, $apiTokenInstance, $host = "https://api.green-api.com", $media = "https://media.green-api.com" ) {
 
 		$this->idInstance = $idInstance;
 		$this->apiTokenInstance = $apiTokenInstance;
 		$this->host = $host;
+        $this->media = $media;
 
 		$this->account = new Account( $this );
 		$this->device = new Device( $this );
@@ -99,6 +101,7 @@ class GreenApiClient {
 		string $mime_type = null, string $path = null
 	): stdClass {
 		$url = str_replace( '{{host}}', $this->host, $url );
+        $url = str_replace( '{{media}}', $this->media, $url );
 		$url = str_replace( '{{idInstance}}', $this->idInstance, $url );
 		$url = str_replace( '{{apiTokenInstance}}', $this->apiTokenInstance, $url );
 
