@@ -121,18 +121,3 @@ class Account {
 		return $this->greenApi->request( 'POST',
 			'{{host}}/waInstance{{idInstance}}/SetSettings/{{apiTokenInstance}}', $requestBody );
 	}
-
-
-	/**
-	 * The method is aimed for setting a system proxy. Use the method when you need to reset custom proxy settings to
-	 * system ones.
-	 *
-	 * @return stdClass
-	 * @link https://green-api.com/en/docs/api/account/SetSystemProxy/
-	 */
-	public function setSystemProxy(): stdClass {
-
-		return $this->greenApi->request( 'GET',
-			'{{host}}/waInstance{{idInstance}}/SetSystemProxy/{{apiTokenInstance}}' );
-	}
-}
