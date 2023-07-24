@@ -36,6 +36,26 @@ class Journals {
 			'{{host}}/waInstance{{idInstance}}/GetChatHistory/{{apiTokenInstance}}', $requestBody );
 	}
 
+    /**
+     * The method returns the chat message.
+     *
+     * @param string $chatId
+     * @param string $idMessage
+     *
+     * @return stdClass
+     * @link https://green-api.com/en/docs/api/journals/GetMessage/
+     */
+    public function getMessage( string $chatId, string $idMessage ): stdClass {
+
+        $requestBody = [
+            'chatId' => $chatId,
+            'idMessage' => $idMessage,
+        ];
+
+        return $this->greenApi->request( 'POST',
+            '{{host}}/waInstance{{idInstance}}/getMessage/{{apiTokenInstance}}', $requestBody );
+    }
+
 	/**
 	 * The method returns the chat message history.
 	 *
