@@ -33,14 +33,18 @@ class Journals
             'chatId' => $chatId,
         ];
 
-        if ($count) {
+        if (!is_null($count)) {
             $requestBody['count'] = $count;
         }
 
         return $this->greenApi->request(
-            'POST', '{{host}}/waInstance{{idInstance}}/GetChatHistory/{{apiTokenInstance}}', $requestBody
+            'POST',
+            '{{host}}/waInstance{{idInstance}}/GetChatHistory/{{apiTokenInstance}}',
+            $requestBody
         );
     }
+
+
 
     /**
      * The method returns the chat message.
@@ -60,7 +64,9 @@ class Journals
         ];
 
         return $this->greenApi->request(
-            'POST', '{{host}}/waInstance{{idInstance}}/getMessage/{{apiTokenInstance}}', $requestBody
+            'POST',
+            '{{host}}/waInstance{{idInstance}}/getMessage/{{apiTokenInstance}}',
+            $requestBody
         );
     }
 
@@ -82,7 +88,9 @@ class Journals
         }
 
         return $this->greenApi->request(
-            'GET', '{{host}}/waInstance{{idInstance}}/LastIncomingMessages/{{apiTokenInstance}}', $requestBody
+            'GET',
+            '{{host}}/waInstance{{idInstance}}/LastIncomingMessages/{{apiTokenInstance}}',
+            $requestBody
         );
     }
 
@@ -105,7 +113,9 @@ class Journals
         }
 
         return $this->greenApi->request(
-            'GET', '{{host}}/waInstance{{idInstance}}/LastOutgoingMessages/{{apiTokenInstance}}', $requestBody
+            'GET',
+            '{{host}}/waInstance{{idInstance}}/LastOutgoingMessages/{{apiTokenInstance}}',
+            $requestBody
         );
     }
 }

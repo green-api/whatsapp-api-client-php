@@ -5,14 +5,16 @@ namespace GreenApi\RestApi\tools;
 use GreenApi\RestApi\GreenApiClient;
 use stdClass;
 
-class ServiceMethods {
+class ServiceMethods
+{
 
 	/**
 	 * @param GreenApiClient $greenApi
 	 */
 	private $greenApi;
 
-	public function __construct( GreenApiClient $greenApi ) {
+	public function __construct(GreenApiClient $greenApi)
+	{
 		$this->greenApi = $greenApi;
 	}
 
@@ -24,14 +26,18 @@ class ServiceMethods {
 	 * @return stdClass
 	 * @link https://green-api.com/en/docs/api/service/CheckWhatsapp/
 	 */
-	public function checkWhatsapp( int $phoneNumber ): stdClass {
+	public function checkWhatsapp(int $phoneNumber): stdClass
+	{
 
 		$requestBody = [
 			'phoneNumber' => $phoneNumber,
 		];
 
-		return $this->greenApi->request( 'POST',
-			'{{host}}/waInstance{{idInstance}}/CheckWhatsapp/{{apiTokenInstance}}', $requestBody );
+		return $this->greenApi->request(
+			'POST',
+			'{{host}}/waInstance{{idInstance}}/CheckWhatsapp/{{apiTokenInstance}}',
+			$requestBody
+		);
 	}
 
 	/**
@@ -42,14 +48,18 @@ class ServiceMethods {
 	 * @return stdClass
 	 * @link https://green-api.com/en/docs/api/service/GetAvatar/
 	 */
-	public function getAvatar( string $chatId ): stdClass {
+	public function getAvatar(string $chatId): stdClass
+	{
 
 		$requestBody = [
 			'chatId' => $chatId,
 		];
 
-		return $this->greenApi->request( 'POST',
-			'{{host}}/waInstance{{idInstance}}/GetAvatar/{{apiTokenInstance}}', $requestBody );
+		return $this->greenApi->request(
+			'POST',
+			'{{host}}/waInstance{{idInstance}}/GetAvatar/{{apiTokenInstance}}',
+			$requestBody
+		);
 	}
 
 	/**
@@ -60,14 +70,18 @@ class ServiceMethods {
 	 * @return stdClass
 	 * @link https://green-api.com/en/docs/api/service/GetContactInfo/
 	 */
-	public function getContactInfo( string $chatId ): stdClass {
+	public function getContactInfo(string $chatId): stdClass
+	{
 
 		$requestBody = [
 			'chatId' => $chatId,
 		];
 
-		return $this->greenApi->request( 'POST',
-			'{{host}}/waInstance{{idInstance}}/GetContactInfo/{{apiTokenInstance}}', $requestBody );
+		return $this->greenApi->request(
+			'POST',
+			'{{host}}/waInstance{{idInstance}}/GetContactInfo/{{apiTokenInstance}}',
+			$requestBody
+		);
 	}
 
 	/**
@@ -81,10 +95,13 @@ class ServiceMethods {
 	 * @return stdClass
 	 * @link https://green-api.com/en/docs/api/service/GetContacts/
 	 */
-	public function getContacts(): stdClass {
+	public function getContacts(): stdClass
+	{
 
-		return $this->greenApi->request( 'GET',
-			'{{host}}/waInstance{{idInstance}}/GetContacts/{{apiTokenInstance}}' );
+		return $this->greenApi->request(
+			'GET',
+			'{{host}}/waInstance{{idInstance}}/GetContacts/{{apiTokenInstance}}'
+		);
 	}
 
 
@@ -96,14 +113,18 @@ class ServiceMethods {
 	 * @return stdClass
 	 * @link https://green-api.com/en/docs/api/service/ArchiveChat/
 	 */
-	public function archiveChat( string $chatId ): stdClass {
+	public function archiveChat(string $chatId): stdClass
+	{
 
 		$requestBody = [
 			'chatId' => $chatId,
 		];
 
-		return $this->greenApi->request( 'POST',
-			'{{host}}/waInstance{{idInstance}}/ArchiveChat/{{apiTokenInstance}}', $requestBody );
+		return $this->greenApi->request(
+			'POST',
+			'{{host}}/waInstance{{idInstance}}/ArchiveChat/{{apiTokenInstance}}',
+			$requestBody
+		);
 	}
 
 
@@ -116,15 +137,19 @@ class ServiceMethods {
 	 * @return stdClass
 	 * @link https://green-api.com/en/docs/api/service/DeleteMessage/
 	 */
-	public function deleteMessage( string $chatId, string $idMessage ): stdClass {
+	public function deleteMessage(string $chatId, string $idMessage): stdClass
+	{
 
 		$requestBody = [
 			'chatId' => $chatId,
 			'idMessage' => $idMessage,
 		];
 
-		return $this->greenApi->request( 'POST',
-			'{{host}}/waInstance{{idInstance}}/DeleteMessage/{{apiTokenInstance}}', $requestBody );
+		return $this->greenApi->request(
+			'POST',
+			'{{host}}/waInstance{{idInstance}}/DeleteMessage/{{apiTokenInstance}}',
+			$requestBody
+		);
 	}
 
 	/**
@@ -135,14 +160,18 @@ class ServiceMethods {
 	 * @return stdClass
 	 * @link https://green-api.com/en/docs/api/service/unarchiveChat/
 	 */
-	public function unarchiveChat( string $chatId ): stdClass {
+	public function unarchiveChat(string $chatId): stdClass
+	{
 
 		$requestBody = [
 			'chatId' => $chatId,
 		];
 
-		return $this->greenApi->request( 'POST',
-			'{{host}}/waInstance{{idInstance}}/UnarchiveChat/{{apiTokenInstance}}', $requestBody );
+		return $this->greenApi->request(
+			'POST',
+			'{{host}}/waInstance{{idInstance}}/UnarchiveChat/{{apiTokenInstance}}',
+			$requestBody
+		);
 	}
 
 	/**
@@ -155,15 +184,22 @@ class ServiceMethods {
 	 * @return stdClass
 	 * @link https://green-api.com/en/docs/api/service/SetDisappearingChat/
 	 */
-	public function setDisappearingChat( string $chatId, int $ephemeralExpiration ): stdClass {
+	public function setDisappearingChat(string $chatId, int $ephemeralExpiration = null): stdClass
+	{
 
 		$requestBody = [
 			'chatId' => $chatId,
-			'ephemeralExpiration' => $ephemeralExpiration,
 		];
 
-		return $this->greenApi->request( 'POST',
-			'{{host}}/waInstance{{idInstance}}/SetDisappearingChat/{{apiTokenInstance}}', $requestBody );
+		if (!is_null($ephemeralExpiration)) {
+			$requestBody['ephemeralExpiration'] = $ephemeralExpiration;
+		}
+
+		return $this->greenApi->request(
+			'POST',
+			'{{host}}/waInstance{{idInstance}}/SetDisappearingChat/{{apiTokenInstance}}',
+			$requestBody
+		);
 	}
 
 }
