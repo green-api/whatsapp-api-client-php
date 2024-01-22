@@ -33,7 +33,7 @@ class Journals
             'chatId' => $chatId,
         ];
 
-        if ($count) {
+        if (!is_null($count)) {
             $requestBody['count'] = $count;
         }
 

@@ -413,4 +413,42 @@ class Sending {
 		return $this->greenApi->request( 'POST_BINARY',
 			'{{media}}/waInstance{{idInstance}}/UploadFile/{{apiTokenInstance}}', null, false, null, $path );
 	}
+
+	/**
+     * The method is aimed for sending a message with poll to a personal or a group chat.
+     * The message will be added to the send queue. Checking whatsapp authorization on the phone (i.e. availability in
+     * linked devices) is not performed. The message will be kept for 24 hours in the queue and will be sent immediately
+     * after phone authorization. The rate at which messages are sent from the queue is managed by Message sending delay
+     * parameter.
+     *
+     * @param string $chatId
+     * @param string $message
+     * @param array $options
+     * @param bool $multipleAnswers
+     * @param string $quotedMessageId
+     *
+     * @return stdClass
+     * @link https://green-api.com/en/docs/api/sending/SendPoll/
+     */
+    public function sendPoll(
+        string $chatId, string $message, array $options, bool $multipleAnswers = false,
+        string $quotedMessageId = null
+    ): stdClass {
+
+        $requestBody = [
+            'chatId' => $chatId,
+            'message' => $message,
+            'options' => $options,
+        ];
+
+        if ( $multipleAnswers ) {
+            $requestBody['multipleAnswers'] = $multipleAnswers;
+        }
+        if ( $quotedMessageId ) {
+            $requestBody['quotedMessageId'] = $quotedMessageId;
+        }
+
+        return $this->greenApi->request( 'POST',
+            '{{host}}/waInstance{{idInstance}}/SendPoll/{{apiTokenInstance}}', $requestBody );
+    }
 }

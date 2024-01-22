@@ -28,9 +28,12 @@ class Marking {
 	public function readChat( string $chatId, string $idMessage ): stdClass {
 
 		$requestBody = [
-			'chatId' => $chatId,
-			'idMessage' => $idMessage,
+			'chatId' => $chatId
 		];
+
+		if (!is_null($idMessage)) {
+			$requestBody['idMessage'] = $idMessage;
+		}
 
 		return $this->greenApi->request( 'POST',
 			'{{host}}/waInstance{{idInstance}}/ReadChat/{{apiTokenInstance}}', $requestBody );

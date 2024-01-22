@@ -115,6 +115,15 @@ Message body types and formats [here](https://green-api.com/en/docs/api/receivin
 
 This method will be called when an incoming message is received. Next, process messages according to the business logic of your system.
 
+### Sending a message with a poll to a WhatsApp number
+
+```
+$result = $greenApi->sending->sendPoll('11001234567@c.us', 'Message text',
+    array(array('optionName'=>'green'), array('optionName'=>'red'), array('optionName'=>'blue')));
+```
+
+Example url: [sendPoll.php](https://github.com/green-api/whatsapp-api-client-php/blob/master/examples/sendPoll.php)
+
 ## Examples list
 
 | Description                                                    | Module                                                                                                                                   |
@@ -124,6 +133,7 @@ This method will be called when an incoming message is received. Next, process m
 | Example of sending a picture by uploading from the disk        | [sendPictureByUpload.php](https://github.com/green-api/whatsapp-api-client-php/blob/master/examples/sendPictureByUpload.php)             |
 | Example of a group creation and sending a message to the group | [createGroupAndSendMessage.php](https://github.com/green-api/whatsapp-api-client-php/blob/master/examples/createGroupAndSendMessage.php) |
 | Example of incoming webhooks receiving                         | [receiveNotification.php](https://github.com/green-api/whatsapp-api-client-php/blob/master/examples/receiveNotification.php)             |
+| Example of sending a message with a poll                       | [sendPoll.php](https://github.com/green-api/whatsapp-api-client-php/blob/master/examples/sendPoll.php)                                   |
 
 ## The full list of the library methods
 
@@ -137,6 +147,7 @@ This method will be called when an incoming message is received. Next, process m
 | `account.logout`                       | The method is designed to unlogin the account                                                                            | [Logout](https://green-api.com/en/docs/api/account/Logout/)                                                 |
 | `account.qr`                           | The method is designed to get a QR code                                                                                  | [QR](https://green-api.com/en/docs/api/account/QR/)                                                         |
 | `account.setProfilePicture`            | The method is designed to set the avatar of the account                                                                  | [SetProfilePicture](https://green-api.com/en/docs/api/account/SetProfilePicture/)                           |
+| `account.getAuthorizationCode                    | The method is designed to authorize an instance by phone number                                                          | [GetAuthorizationCode](https://green-api.com/en/docs/api/account/GetAuthorizationCode/)                     |
 | `device.getDeviceInfo`                 | The method is designed to get information about the device (phone) on which the WhatsApp Business application is running | [GetDeviceInfo](https://green-api.com/en/docs/api/phone/GetDeviceInfo/)                                     |
 | `groups.createGroup`                   | The method is designed to create a group chat                                                                            | [CreateGroup](https://green-api.com/en/docs/api/groups/CreateGroup/)                                        |
 | `groups.updateGroupName`               | The method changes the name of the group chat                                                                            | [UpdateGroupName](https://green-api.com/en/docs/api/groups/UpdateGroupName/)                                |
@@ -166,6 +177,7 @@ This method will be called when an incoming message is received. Next, process m
 | `sending.sendContact`                  | The method is for sending a message with a contact                                                                       | [SendContact](https://green-api.com/en/docs/api/sending/SendContact/)                                       |
 | `sending.sendLink`                     | The method is designed to send a message with a link that will add an image preview, title and description               | [SendLink](https://green-api.com/en/docs/api/sending/SendLink/)                                             |
 | `sending.forwardMessages`              | The method is designed for forwarding messages to a personal or group chat                                               | [ForwardMessages](https://green-api.com/en/docs/api/sending/ForwardMessages/)                               |
+| `sending.sendPoll`                     | The method is designed for sending message with a poll to a personal or group                                            | [SendPoll](https://green-api.com/en/docs/api/sending/SendPoll/)                                             |
 | `serviceMethods.checkWhatsapp`         | The method checks if there is a WhatsApp account on the phone number                                                     | [CheckWhatsapp](https://green-api.com/en/docs/api/service/CheckWhatsapp/)                                   |
 | `serviceMethods.getAvatar`             | The method returns the avatar of the correspondent or group chat                                                         | [GetAvatar](https://green-api.com/en/docs/api/service/GetAvatar/)                                           |
 | `serviceMethods.getContacts`           | The method is designed to get a list of contacts of the current account                                                  | [GetContacts](https://green-api.com/en/docs/api/service/GetContacts/)                                       |
