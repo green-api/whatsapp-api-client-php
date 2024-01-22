@@ -44,7 +44,7 @@ class Sending {
 			'buttons' => $buttons,
 		];
 
-		if ( $quotedMessageId ) {
+		if ( !is_null($quotedMessageId) ) {
 			$requestBody['quotedMessageId'] = $quotedMessageId;
 		}
 
@@ -76,7 +76,7 @@ class Sending {
 			'contact' => $contact
 		];
 
-		if ( $quotedMessageId ) {
+		if ( !is_null($quotedMessageId) ) {
 			$requestBody['quotedMessageId'] = $quotedMessageId;
 		}
 
@@ -115,10 +115,10 @@ class Sending {
 		];
 		$requestBody['file']->mime = mime_content_type( $path );
 
-		if ( $caption ) {
+		if ( !is_null($caption) ) {
 			$requestBody['caption'] = $caption;
 		}
-		if ( $quotedMessageId ) {
+		if ( !is_null($quotedMessageId) ) {
 			$requestBody['quotedMessageId'] = $quotedMessageId;
 		}
 
@@ -159,15 +159,15 @@ class Sending {
 			'fileName' => $fileName,
 		];
 
-		if ( $caption ) {
+		if ( !is_null($caption)) {
 			$requestBody['caption'] = $caption;
 		}
 
-		if ( $quotedMessageId ) {
+		if ( !is_null($quotedMessageId) ) {
 			$requestBody['quotedMessageId'] = $quotedMessageId;
 		}
 
-		if ( $archiveChat ) {
+		if ( !is_null($archiveChat) ) {
 			$requestBody['archiveChat'] = $archiveChat;
 		}
 
@@ -196,7 +196,7 @@ class Sending {
 			'urlLink' => $urlLink
 		];
 
-		if ( $quotedMessageId ) {
+		if ( !is_null($quotedMessageId) ) {
 			$requestBody['quotedMessageId'] = $quotedMessageId;
 		}
 
@@ -235,16 +235,16 @@ class Sending {
 			'sections' => $sections,
 		];
 
-		if ( $title ) {
+		if ( !is_null($title) ) {
 			$requestBody['title'] = $title;
 		}
-		if ( $footer ) {
+		if ( !is_null($footer) ) {
 			$requestBody['footer'] = $footer;
 		}
-		if ( $buttonText ) {
+		if ( !is_null($buttonText) ) {
 			$requestBody['buttonText'] = $buttonText;
 		}
-		if ( $quotedMessageId ) {
+		if ( !is_null($quotedMessageId) ) {
 			$requestBody['quotedMessageId'] = $quotedMessageId;
 		}
 		if ( $archiveChat ) {
@@ -281,13 +281,13 @@ class Sending {
 			'longitude' => $longitude,
 		];
 
-		if ( $nameLocation ) {
+		if ( !is_null($nameLocation) ) {
 			$requestBody['nameLocation'] = $nameLocation;
 		}
-		if ( $address ) {
+		if ( !is_null($address) ) {
 			$requestBody['address'] = $address;
 		}
-		if ( $quotedMessageId ) {
+		if ( !is_null($quotedMessageId) ) {
 			$requestBody['quotedMessageId'] = $quotedMessageId;
 		}
 
@@ -319,7 +319,7 @@ class Sending {
 			'message' => $message,
 		];
 
-		if ( $quotedMessageId ) {
+		if ( !is_null($quotedMessageId) ) {
 			$requestBody['quotedMessageId'] = $quotedMessageId;
 		}
 
@@ -360,10 +360,10 @@ class Sending {
 			'templateButtons' => $templateButtons,
 		];
 
-		if ( $footer ) {
+		if ( !is_null($footer) ) {
 			$requestBody['footer'] = $footer;
 		}
-		if ( $quotedMessageId ) {
+		if ( !is_null($quotedMessageId) ) {
 			$requestBody['quotedMessageId'] = $quotedMessageId;
 		}
 		if ( $archiveChat ) {
@@ -425,7 +425,7 @@ class Sending {
      * @param string $message
      * @param array $options
      * @param bool $multipleAnswers
-     * @param string $quotedMessageId
+     * @param string|null $quotedMessageId
      *
      * @return stdClass
      * @link https://green-api.com/en/docs/api/sending/SendPoll/
@@ -444,7 +444,7 @@ class Sending {
         if ( $multipleAnswers ) {
             $requestBody['multipleAnswers'] = $multipleAnswers;
         }
-        if ( $quotedMessageId ) {
+        if ( !is_null($quotedMessageId) ) {
             $requestBody['quotedMessageId'] = $quotedMessageId;
         }
 

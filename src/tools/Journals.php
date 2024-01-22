@@ -77,7 +77,7 @@ class Journals
     {
         $requestBody = null;
 
-        if ($minutes) {
+        if (!is_null($minutes)) {
             $requestBody['minutes'] = $minutes;
         }
 
@@ -100,7 +100,7 @@ class Journals
     {
         $requestBody = null;
 
-        if ($minutes) {
+        if (!is_null($minutes)) {
             $requestBody['minutes'] = $minutes;
         }
 
