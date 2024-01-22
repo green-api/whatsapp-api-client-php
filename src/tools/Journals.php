@@ -33,7 +33,7 @@ class Journals
             'chatId' => $chatId,
         ];
 
-        if ($count) {
+        if (!is_null($count)) {
             $requestBody['count'] = $count;
         }
 
@@ -77,7 +77,7 @@ class Journals
     {
         $requestBody = null;
 
-        if ($minutes) {
+        if (!is_null($minutes)) {
             $requestBody['minutes'] = $minutes;
         }
 
@@ -100,7 +100,7 @@ class Journals
     {
         $requestBody = null;
 
-        if ($minutes) {
+        if (!is_null($minutes)) {
             $requestBody['minutes'] = $minutes;
         }
 

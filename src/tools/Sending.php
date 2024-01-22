@@ -44,7 +44,7 @@ class Sending {
 			'buttons' => $buttons,
 		];
 
-		if ( $quotedMessageId ) {
+		if ( !is_null($quotedMessageId) ) {
 			$requestBody['quotedMessageId'] = $quotedMessageId;
 		}
 
@@ -76,7 +76,7 @@ class Sending {
 			'contact' => $contact
 		];
 
-		if ( $quotedMessageId ) {
+		if ( !is_null($quotedMessageId) ) {
 			$requestBody['quotedMessageId'] = $quotedMessageId;
 		}
 
@@ -115,10 +115,10 @@ class Sending {
 		];
 		$requestBody['file']->mime = mime_content_type( $path );
 
-		if ( $caption ) {
+		if ( !is_null($caption) ) {
 			$requestBody['caption'] = $caption;
 		}
-		if ( $quotedMessageId ) {
+		if ( !is_null($quotedMessageId) ) {
 			$requestBody['quotedMessageId'] = $quotedMessageId;
 		}
 
@@ -159,15 +159,15 @@ class Sending {
 			'fileName' => $fileName,
 		];
 
-		if ( $caption ) {
+		if ( !is_null($caption)) {
 			$requestBody['caption'] = $caption;
 		}
 
-		if ( $quotedMessageId ) {
+		if ( !is_null($quotedMessageId) ) {
 			$requestBody['quotedMessageId'] = $quotedMessageId;
 		}
 
-		if ( $archiveChat ) {
+		if ( !is_null($archiveChat) ) {
 			$requestBody['archiveChat'] = $archiveChat;
 		}
 
@@ -196,7 +196,7 @@ class Sending {
 			'urlLink' => $urlLink
 		];
 
-		if ( $quotedMessageId ) {
+		if ( !is_null($quotedMessageId) ) {
 			$requestBody['quotedMessageId'] = $quotedMessageId;
 		}
 
@@ -235,16 +235,16 @@ class Sending {
 			'sections' => $sections,
 		];
 
-		if ( $title ) {
+		if ( !is_null($title) ) {
 			$requestBody['title'] = $title;
 		}
-		if ( $footer ) {
+		if ( !is_null($footer) ) {
 			$requestBody['footer'] = $footer;
 		}
-		if ( $buttonText ) {
+		if ( !is_null($buttonText) ) {
 			$requestBody['buttonText'] = $buttonText;
 		}
-		if ( $quotedMessageId ) {
+		if ( !is_null($quotedMessageId) ) {
 			$requestBody['quotedMessageId'] = $quotedMessageId;
 		}
 		if ( $archiveChat ) {
@@ -281,13 +281,13 @@ class Sending {
 			'longitude' => $longitude,
 		];
 
-		if ( $nameLocation ) {
+		if ( !is_null($nameLocation) ) {
 			$requestBody['nameLocation'] = $nameLocation;
 		}
-		if ( $address ) {
+		if ( !is_null($address) ) {
 			$requestBody['address'] = $address;
 		}
-		if ( $quotedMessageId ) {
+		if ( !is_null($quotedMessageId) ) {
 			$requestBody['quotedMessageId'] = $quotedMessageId;
 		}
 
@@ -319,7 +319,7 @@ class Sending {
 			'message' => $message,
 		];
 
-		if ( $quotedMessageId ) {
+		if ( !is_null($quotedMessageId) ) {
 			$requestBody['quotedMessageId'] = $quotedMessageId;
 		}
 
@@ -360,10 +360,10 @@ class Sending {
 			'templateButtons' => $templateButtons,
 		];
 
-		if ( $footer ) {
+		if ( !is_null($footer) ) {
 			$requestBody['footer'] = $footer;
 		}
-		if ( $quotedMessageId ) {
+		if ( !is_null($quotedMessageId) ) {
 			$requestBody['quotedMessageId'] = $quotedMessageId;
 		}
 		if ( $archiveChat ) {
@@ -413,4 +413,42 @@ class Sending {
 		return $this->greenApi->request( 'POST_BINARY',
 			'{{media}}/waInstance{{idInstance}}/UploadFile/{{apiTokenInstance}}', null, false, null, $path );
 	}
+
+	/**
+     * The method is aimed for sending a message with poll to a personal or a group chat.
+     * The message will be added to the send queue. Checking whatsapp authorization on the phone (i.e. availability in
+     * linked devices) is not performed. The message will be kept for 24 hours in the queue and will be sent immediately
+     * after phone authorization. The rate at which messages are sent from the queue is managed by Message sending delay
+     * parameter.
+     *
+     * @param string $chatId
+     * @param string $message
+     * @param array $options
+     * @param bool $multipleAnswers
+     * @param string|null $quotedMessageId
+     *
+     * @return stdClass
+     * @link https://green-api.com/en/docs/api/sending/SendPoll/
+     */
+    public function sendPoll(
+        string $chatId, string $message, array $options, bool $multipleAnswers = false,
+        string $quotedMessageId = null
+    ): stdClass {
+
+        $requestBody = [
+            'chatId' => $chatId,
+            'message' => $message,
+            'options' => $options,
+        ];
+
+        if ( $multipleAnswers ) {
+            $requestBody['multipleAnswers'] = $multipleAnswers;
+        }
+        if ( !is_null($quotedMessageId) ) {
+            $requestBody['quotedMessageId'] = $quotedMessageId;
+        }
+
+        return $this->greenApi->request( 'POST',
+            '{{host}}/waInstance{{idInstance}}/SendPoll/{{apiTokenInstance}}', $requestBody );
+    }
 }

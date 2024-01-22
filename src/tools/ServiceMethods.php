@@ -158,9 +158,12 @@ class ServiceMethods {
 	public function setDisappearingChat( string $chatId, int $ephemeralExpiration ): stdClass {
 
 		$requestBody = [
-			'chatId' => $chatId,
-			'ephemeralExpiration' => $ephemeralExpiration,
+			'chatId' => $chatId
 		];
+
+		if (!is_null($ephemeralExpiration)) {
+			$requestBody['ephemeralExpiration'] = $ephemeralExpiration;
+		}
 
 		return $this->greenApi->request( 'POST',
 			'{{host}}/waInstance{{idInstance}}/SetDisappearingChat/{{apiTokenInstance}}', $requestBody );

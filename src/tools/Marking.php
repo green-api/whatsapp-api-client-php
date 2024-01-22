@@ -20,17 +20,20 @@ class Marking {
 	 * The method returns the chat message history.
 	 *
 	 * @param string $chatId
-	 * @param string $idMessage
+	 * @param string|null $idMessage
 	 *
 	 * @return stdClass
 	 * @link https://green-api.com/en/docs/api/marks/ReadChat/
 	 */
-	public function readChat( string $chatId, string $idMessage ): stdClass {
+	public function readChat( string $chatId, string $idMessage = null ): stdClass {
 
 		$requestBody = [
-			'chatId' => $chatId,
-			'idMessage' => $idMessage,
+			'chatId' => $chatId
 		];
+
+		if (!is_null($idMessage)) {
+			$requestBody['idMessage'] = $idMessage;
+		}
 
 		return $this->greenApi->request( 'POST',
 			'{{host}}/waInstance{{idInstance}}/ReadChat/{{apiTokenInstance}}', $requestBody );
