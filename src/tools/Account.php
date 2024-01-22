@@ -5,13 +5,15 @@ namespace GreenApi\RestApi\tools;
 use GreenApi\RestApi\GreenApiClient;
 use stdClass;
 
-class Account {
+class Account
+{
 	private $greenApi;
 
 	/**
 	 * @param GreenApiClient $greenApi
 	 */
-	public function __construct( GreenApiClient $greenApi ) {
+	public function __construct(GreenApiClient $greenApi)
+	{
 		$this->greenApi = $greenApi;
 	}
 
@@ -21,10 +23,13 @@ class Account {
 	 * @return stdClass
 	 * @link https://green-api.com/en/docs/api/account/GetSettings/
 	 */
-	public function getSettings(): stdClass {
+	public function getSettings(): stdClass
+	{
 
-		return $this->greenApi->request( 'GET',
-			'{{host}}/waInstance{{idInstance}}/GetSettings/{{apiTokenInstance}}' );
+		return $this->greenApi->request(
+			'GET',
+			'{{host}}/waInstance{{idInstance}}/GetSettings/{{apiTokenInstance}}'
+		);
 	}
 
 	/**
@@ -33,10 +38,13 @@ class Account {
 	 * @return stdClass
 	 * @link https://green-api.com/en/docs/api/account/GetStateInstance/
 	 */
-	public function getStateInstance(): stdClass {
+	public function getStateInstance(): stdClass
+	{
 
-		return $this->greenApi->request( 'GET',
-			'{{host}}/waInstance{{idInstance}}/GetStateInstance/{{apiTokenInstance}}' );
+		return $this->greenApi->request(
+			'GET',
+			'{{host}}/waInstance{{idInstance}}/GetStateInstance/{{apiTokenInstance}}'
+		);
 	}
 
 	/**
@@ -45,10 +53,13 @@ class Account {
 	 * @return stdClass
 	 * @link https://green-api.com/en/docs/api/account/GetStatusInstance/
 	 */
-	public function getStatusInstance(): stdClass {
+	public function getStatusInstance(): stdClass
+	{
 
-		return $this->greenApi->request( 'GET',
-			'{{host}}/waInstance{{idInstance}}/GetStatusInstance/{{apiTokenInstance}}' );
+		return $this->greenApi->request(
+			'GET',
+			'{{host}}/waInstance{{idInstance}}/GetStatusInstance/{{apiTokenInstance}}'
+		);
 	}
 
 	/**
@@ -57,10 +68,13 @@ class Account {
 	 * @return stdClass
 	 * @link https://green-api.com/en/docs/api/account/Logout/
 	 */
-	public function logout(): stdClass {
+	public function logout(): stdClass
+	{
 
-		return $this->greenApi->request( 'GET',
-			'{{host}}/waInstance{{idInstance}}/Logout/{{apiTokenInstance}}' );
+		return $this->greenApi->request(
+			'GET',
+			'{{host}}/waInstance{{idInstance}}/Logout/{{apiTokenInstance}}'
+		);
 	}
 
 	/**
@@ -70,10 +84,13 @@ class Account {
 	 * @return stdClass
 	 * @link https://green-api.com/en/docs/api/account/QR/
 	 */
-	public function qr(): stdClass {
+	public function qr(): stdClass
+	{
 
-		return $this->greenApi->request( 'GET',
-			'{{host}}/waInstance{{idInstance}}/QR/{{apiTokenInstance}}' );
+		return $this->greenApi->request(
+			'GET',
+			'{{host}}/waInstance{{idInstance}}/QR/{{apiTokenInstance}}'
+		);
 	}
 
 	/**
@@ -82,10 +99,13 @@ class Account {
 	 * @return stdClass
 	 * @link https://green-api.com/en/docs/api/account/Reboot/
 	 */
-	public function reboot(): stdClass {
+	public function reboot(): stdClass
+	{
 
-		return $this->greenApi->request( 'GET',
-			'{{host}}/waInstance{{idInstance}}/Reboot/{{apiTokenInstance}}' );
+		return $this->greenApi->request(
+			'GET',
+			'{{host}}/waInstance{{idInstance}}/Reboot/{{apiTokenInstance}}'
+		);
 	}
 
 
@@ -97,15 +117,20 @@ class Account {
 	 * @return stdClass
 	 * @link https://green-api.com/en/docs/api/account/SetProfilePicture/
 	 */
-	public function setProfilePicture( string $path ): stdClass {
+	public function setProfilePicture(string $path): stdClass
+	{
 
 		$requestBody = [
-			'file' => curl_file_create( $path ),
+			'file' => curl_file_create($path),
 		];
 		$requestBody['file']->mime = 'image/jpeg';
 
-		return $this->greenApi->request( 'POST',
-			'{{host}}/waInstance{{idInstance}}/SetProfilePicture/{{apiTokenInstance}}', $requestBody, true );
+		return $this->greenApi->request(
+			'POST',
+			'{{host}}/waInstance{{idInstance}}/SetProfilePicture/{{apiTokenInstance}}',
+			$requestBody,
+			true
+		);
 	}
 
 	/**
@@ -116,8 +141,13 @@ class Account {
 	 * @return stdClass
 	 * @link https://green-api.com/en/docs/api/account/SetSettings/
 	 */
-	public function setSettings( array $requestBody ): stdClass {
+	public function setSettings(array $requestBody): stdClass
+	{
 
-		return $this->greenApi->request( 'POST',
-			'{{host}}/waInstance{{idInstance}}/SetSettings/{{apiTokenInstance}}', $requestBody );
+		return $this->greenApi->request(
+			'POST',
+			'{{host}}/waInstance{{idInstance}}/SetSettings/{{apiTokenInstance}}',
+			$requestBody
+		);
 	}
+}
