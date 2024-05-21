@@ -121,3 +121,4 @@ class Account {
 		return $this->greenApi->request( 'POST',
 			'{{host}}/waInstance{{idInstance}}/SetSettings/{{apiTokenInstance}}', $requestBody );
 	}
+}
