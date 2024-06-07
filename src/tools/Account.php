@@ -30,14 +30,26 @@ class Account
             '{{host}}/waInstance{{idInstance}}/GetSettings/{{apiTokenInstance}}');
     }
 
-    /**
-     * The method is aimed for getting the account state.
-     *
-     * @return stdClass
-     * @link https://green-api.com/en/docs/api/account/GetStateInstance/
-     */
-    public function getStateInstance(): stdClass
-    {
+		/**
+	 * The method is aimed for getting the current account settings.
+	 *
+	 * @return stdClass
+	 * @link https://green-api.com/en/docs/api/account/GetWaSettings/
+	 */
+
+	public function getWaSettings(): stdClass {
+
+		return $this->greenApi->request( 'GET',
+			'{{host}}/waInstance{{idInstance}}/getWaSettings/{{apiTokenInstance}}' );
+	}
+
+	/**
+	 * The method is aimed for getting the account state.
+	 *
+	 * @return stdClass
+	 * @link https://green-api.com/en/docs/api/account/GetStateInstance/
+	 */
+	public function getStateInstance(): stdClass {
 
         return $this->greenApi->request('GET',
             '{{host}}/waInstance{{idInstance}}/GetStateInstance/{{apiTokenInstance}}');
