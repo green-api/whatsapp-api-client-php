@@ -143,7 +143,10 @@ class GreenApiClient {
 				break;
 			case 'POST_BINARY':
 				$mime_type = mime_content_type( $path );
-				$headers = array( 'Content-Type: ' . $mime_type );
+				$headers = array( 
+					'Content-Type: ' . $mime_type ,
+					'GA-Filename:  ' . basename($path)
+			);
 				$filesize = filesize($path);
 				$stream = fopen($path, 'r');
 				curl_setopt( $curl, CURLOPT_PUT, true );
