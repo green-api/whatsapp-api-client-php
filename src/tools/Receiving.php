@@ -22,13 +22,15 @@ class Receiving {
 	 * files using LastOutgoingMessages method.Files storage period and, accordingly, the capability to download
 	 * them is limited to 24 hours.
 	 *
+	 * @param string $chatId
 	 * @param string $idMessage
 	 *
 	 * @return stdClass
 	 */
-	public function downloadFile( string $idMessage ): stdClass {
+	public function downloadFile( string $chatId, string $idMessage ): stdClass {
 
 		$requestBody = [
+			'chatId' => $chatId,
 			'idMessage' => $idMessage,
 		];
 
