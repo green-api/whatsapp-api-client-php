@@ -128,6 +128,28 @@ class ServiceMethods {
 	}
 
 	/**
+	 * The method edits a message in a chat.
+	 *
+	 * @param string $chatId
+	 * @param string $idMessage
+	 * @param string $message
+	 *
+	 * @return stdClass
+	 * @link https://green-api.com/en/docs/api/service/EditMessage/
+	 */
+	public function editMessage( string $chatId, string $idMessage, string $message ): stdClass {
+
+		$requestBody = [
+			'chatId' => $chatId,
+			'idMessage' => $idMessage,
+			'message' => $message,
+		];
+
+		return $this->greenApi->request( 'POST',
+			'{{host}}/waInstance{{idInstance}}/EditMessage/{{apiTokenInstance}}', $requestBody );
+	}
+
+	/**
 	 * The method unarchives a chat.
 	 *
 	 * @param string $chatId

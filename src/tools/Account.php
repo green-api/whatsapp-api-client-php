@@ -5,15 +5,13 @@ namespace GreenApi\RestApi\tools;
 use GreenApi\RestApi\GreenApiClient;
 use stdClass;
 
-class Account
-{
+class Account {
     private $greenApi;
 
     /**
      * @param GreenApiClient $greenApi
      */
-    public function __construct(GreenApiClient $greenApi)
-    {
+    public function __construct(GreenApiClient $greenApi) {
         $this->greenApi = $greenApi;
     }
 
@@ -23,33 +21,65 @@ class Account
      * @return stdClass
      * @link https://green-api.com/en/docs/api/account/GetSettings/
      */
-    public function getSettings(): stdClass
-    {
-
+    public function getSettings(): stdClass {
         return $this->greenApi->request('GET',
             '{{host}}/waInstance{{idInstance}}/GetSettings/{{apiTokenInstance}}');
     }
 
-		/**
-	 * The method is aimed for getting the current account settings.
-	 *
-	 * @return stdClass
-	 * @link https://green-api.com/en/docs/api/account/GetWaSettings/
-	 */
+    /**
+     * The method is aimed for getting the current WhatsApp account settings.
+     *
+     * @return stdClass
+     * @link https://green-api.com/en/docs/api/account/GetWaSettings/
+     */
+    public function getWaSettings(): stdClass {
+        return $this->greenApi->request('GET',
+            '{{host}}/waInstance{{idInstance}}/getWaSettings/{{apiTokenInstance}}');
+    }
 
-	public function getWaSettings(): stdClass {
+    /**
+     * The method is aimed for getting the account state.
+     *
+     * @return stdClass
+     * @link https://green-api.com/en/docs/api/account/GetStateInstance/
+     */
+    public function getStateInstance(): stdClass {
+        return $this->greenApi->request('GET',
+            '{{host}}/waInstance{{idInstance}}/GetStateInstance/{{apiTokenInstance}}');
+    }
 
-		return $this->greenApi->request( 'GET',
-			'{{host}}/waInstance{{idInstance}}/getWaSettings/{{apiTokenInstance}}' );
-	}
+    /**
+     * The method is aimed for getting the status of the account instance socket connection with WhatsApp.
+     *
+     * @return stdClass
+     * @link https://green-api.com/en/docs/api/account/GetStatusInstance/
+     */
+    public function getStatusInstance(): stdClass {
+        return $this->greenApi->request('GET',
+            '{{host}}/waInstance{{idInstance}}/GetStatusInstance/{{apiTokenInstance}}');
+    }
 
-	/**
-	 * The method is aimed for getting the account state.
-	 *
-	 * @return stdClass
-	 * @link https://green-api.com/en/docs/api/account/GetStateInstance/
-	 */
-	public function getStateInstance(): stdClass {
+    /**
+     * The method is aimed for logging out an account.
+     *
+     * @return stdClass
+     * @link https://green-api.com/en/docs/api/account/Logout/
+     */
+    public function logout(): stdClass {
+        return $this->greenApi->request('GET',
+            '{{host}}/waInstance{{idInstance}}/Logout/{{apiTokenInstance}}');
+    }
+
+    /**
+     * The method is aimed for getting QR code.
+     *
+     * @return stdClass
+     * @link https://green-api.com/en/docs/api/account/QR/
+     */
+    public function qr(): stdClass {
+        return $this->greenApi->request('GET',
+            '{{host}}/waInstance{{idInstance}}/QR/{{apiTokenInstance}}');
+    }
 
         return $this->greenApi->request('GET',
             '{{host}}/waInstance{{idInstance}}/GetStateInstance/{{apiTokenInstance}}');
@@ -61,9 +91,7 @@ class Account
      * @return stdClass
      * @link https://green-api.com/en/docs/api/account/GetStatusInstance/
      */
-    public function getStatusInstance(): stdClass
-    {
-
+    public function getStatusInstance(): stdClass {
         return $this->greenApi->request('GET',
             '{{host}}/waInstance{{idInstance}}/GetStatusInstance/{{apiTokenInstance}}');
     }
@@ -74,8 +102,7 @@ class Account
      * @return stdClass
      * @link https://green-api.com/en/docs/api/account/Logout/
      */
-    public function logout(): stdClass
-    {
+    public function logout(): stdClass {
 
         return $this->greenApi->request('GET',
             '{{host}}/waInstance{{idInstance}}/Logout/{{apiTokenInstance}}');
@@ -88,9 +115,7 @@ class Account
      * @return stdClass
      * @link https://green-api.com/en/docs/api/account/QR/
      */
-    public function qr(): stdClass
-    {
-
+    public function qr(): stdClass {
         return $this->greenApi->request('GET',
             '{{host}}/waInstance{{idInstance}}/QR/{{apiTokenInstance}}');
     }
@@ -101,9 +126,7 @@ class Account
      * @return stdClass
      * @link https://green-api.com/en/docs/api/account/Reboot/
      */
-    public function reboot(): stdClass
-    {
-
+    public function reboot(): stdClass {
         return $this->greenApi->request('GET',
             '{{host}}/waInstance{{idInstance}}/Reboot/{{apiTokenInstance}}');
     }
@@ -117,9 +140,7 @@ class Account
      * @return stdClass
      * @link https://green-api.com/en/docs/api/account/SetProfilePicture/
      */
-    public function setProfilePicture(string $path): stdClass
-    {
-
+    public function setProfilePicture(string $path): stdClass {
         $requestBody = [
             'file' => curl_file_create($path),
         ];
@@ -137,9 +158,7 @@ class Account
      * @return stdClass
      * @link https://green-api.com/en/docs/api/account/SetSettings/
      */
-    public function setSettings(array $requestBody): stdClass
-    {
-
+    public function setSettings(array $requestBody): stdClass {
         return $this->greenApi->request('POST',
             '{{host}}/waInstance{{idInstance}}/SetSettings/{{apiTokenInstance}}', $requestBody);
     }
@@ -153,7 +172,6 @@ class Account
      * @link https://green-api.com/en/docs/api/account/GetAuthorizationCode/
      */
     public function getAuthorizationCode( int $phoneNumber ): stdClass {
-
         $requestBody = [
             'phoneNumber' => $phoneNumber,
         ];
