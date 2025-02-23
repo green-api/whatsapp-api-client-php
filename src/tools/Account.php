@@ -151,7 +151,7 @@ class Account {
     }
 
     /**
-     * The method is aimed for setting account settings. When this method is requested, the account is rebooted.
+     * The method is aimed for setting account settings.
      *
      * @param array $requestBody
      *
