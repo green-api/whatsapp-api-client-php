@@ -81,10 +81,6 @@ class Account {
             '{{host}}/waInstance{{idInstance}}/QR/{{apiTokenInstance}}');
     }
 
-        return $this->greenApi->request('GET',
-            '{{host}}/waInstance{{idInstance}}/GetStateInstance/{{apiTokenInstance}}');
-    }
-
     /**
      * The method is aimed for getting the status of the account instance socket connection with WhatsApp.
      *
@@ -103,7 +99,6 @@ class Account {
      * @link https://green-api.com/en/docs/api/account/Logout/
      */
     public function logout(): stdClass {
-
         return $this->greenApi->request('GET',
             '{{host}}/waInstance{{idInstance}}/Logout/{{apiTokenInstance}}');
     }
