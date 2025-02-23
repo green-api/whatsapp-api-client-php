@@ -49,17 +49,6 @@ class Account {
     }
 
     /**
-     * The method is aimed for getting the status of the account instance socket connection with WhatsApp.
-     *
-     * @return stdClass
-     * @link https://green-api.com/en/docs/api/account/GetStatusInstance/
-     */
-    public function getStatusInstance(): stdClass {
-        return $this->greenApi->request('GET',
-            '{{host}}/waInstance{{idInstance}}/GetStatusInstance/{{apiTokenInstance}}');
-    }
-
-    /**
      * The method is aimed for logging out an account.
      *
      * @return stdClass
