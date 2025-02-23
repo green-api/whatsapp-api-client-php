@@ -116,11 +116,12 @@ class ServiceMethods {
 	 * @return stdClass
 	 * @link https://green-api.com/en/docs/api/service/DeleteMessage/
 	 */
-	public function deleteMessage( string $chatId, string $idMessage ): stdClass {
+	public function deleteMessage( string $chatId, string $idMessage, bool $onlySenderDelete = false ): stdClass {
 
 		$requestBody = [
 			'chatId' => $chatId,
 			'idMessage' => $idMessage,
+			'onlySenderDelete' => $onlySenderDelete,
 		];
 
 		return $this->greenApi->request( 'POST',
