@@ -10,7 +10,6 @@
 namespace GreenApi\RestApi;
 
 use GreenApi\RestApi\tools\Account;
-use GreenApi\RestApi\tools\Device;
 use GreenApi\RestApi\tools\Groups;
 use GreenApi\RestApi\tools\Journals;
 use GreenApi\RestApi\tools\Marking;
@@ -31,10 +30,6 @@ class GreenApiClient {
 	 * @var Account
 	 */
 	public $account;
-	/**
-	 * @var Device
-	 */
-	public $device;
 	/**
 	 * @var Sending
 	 */
