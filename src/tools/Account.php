@@ -27,14 +27,16 @@ class Account {
     }
 
     /**
-     * The method is aimed for getting the current WhatsApp account settings.
+     * The method is aimed for setting account settings.
+     *
+     * @param array $requestBody
      *
      * @return stdClass
-     * @link https://green-api.com/en/docs/api/account/GetWaSettings/
+     * @link https://green-api.com/en/docs/api/account/SetSettings/
      */
-    public function getWaSettings(): stdClass {
-        return $this->greenApi->request('GET',
-            '{{host}}/waInstance{{idInstance}}/getWaSettings/{{apiTokenInstance}}');
+    public function setSettings(array $requestBody): stdClass {
+        return $this->greenApi->request('POST',
+            '{{host}}/waInstance{{idInstance}}/SetSettings/{{apiTokenInstance}}', $requestBody);
     }
 
     /**
@@ -49,36 +51,14 @@ class Account {
     }
 
     /**
-     * The method is aimed for logging out an account.
+     * The method is aimed for rebooting an account.
      *
      * @return stdClass
-     * @link https://green-api.com/en/docs/api/account/Logout/
+     * @link https://green-api.com/en/docs/api/account/Reboot/
      */
-    public function logout(): stdClass {
+    public function reboot(): stdClass {
         return $this->greenApi->request('GET',
-            '{{host}}/waInstance{{idInstance}}/Logout/{{apiTokenInstance}}');
-    }
-
-    /**
-     * The method is aimed for getting QR code.
-     *
-     * @return stdClass
-     * @link https://green-api.com/en/docs/api/account/QR/
-     */
-    public function qr(): stdClass {
-        return $this->greenApi->request('GET',
-            '{{host}}/waInstance{{idInstance}}/QR/{{apiTokenInstance}}');
-    }
-
-    /**
-     * The method is aimed for getting the status of the account instance socket connection with WhatsApp.
-     *
-     * @return stdClass
-     * @link https://green-api.com/en/docs/api/account/GetStatusInstance/
-     */
-    public function getStatusInstance(): stdClass {
-        return $this->greenApi->request('GET',
-            '{{host}}/waInstance{{idInstance}}/GetStatusInstance/{{apiTokenInstance}}');
+            '{{host}}/waInstance{{idInstance}}/Reboot/{{apiTokenInstance}}');
     }
 
     /**
@@ -104,17 +84,22 @@ class Account {
             '{{host}}/waInstance{{idInstance}}/QR/{{apiTokenInstance}}');
     }
 
-    /**
-     * The method is aimed for rebooting an account.
+     /**
+     * The method is intended to authorize an instance by phone number.
+     *
+     * @param int $phoneNumber
      *
      * @return stdClass
-     * @link https://green-api.com/en/docs/api/account/Reboot/
+     * @link https://green-api.com/en/docs/api/account/GetAuthorizationCode/
      */
-    public function reboot(): stdClass {
-        return $this->greenApi->request('GET',
-            '{{host}}/waInstance{{idInstance}}/Reboot/{{apiTokenInstance}}');
-    }
+    public function getAuthorizationCode( int $phoneNumber ): stdClass {
+        $requestBody = [
+            'phoneNumber' => $phoneNumber,
+        ];
 
+        return $this->greenApi->request( 'POST',
+            '{{host}}/waInstance{{idInstance}}/getAuthorizationCode/{{apiTokenInstance}}', $requestBody );
+    }
 
     /**
      * The method is aimed for setting an account picture.
@@ -135,32 +120,13 @@ class Account {
     }
 
     /**
-     * The method is aimed for setting account settings.
-     *
-     * @param array $requestBody
+     * The method is aimed for getting the current WhatsApp account settings.
      *
      * @return stdClass
-     * @link https://green-api.com/en/docs/api/account/SetSettings/
+     * @link https://green-api.com/en/docs/api/account/GetWaSettings/
      */
-    public function setSettings(array $requestBody): stdClass {
-        return $this->greenApi->request('POST',
-            '{{host}}/waInstance{{idInstance}}/SetSettings/{{apiTokenInstance}}', $requestBody);
-    }
-
-    /**
-     * The method is intended to authorize an instance by phone number.
-     *
-     * @param int $phoneNumber
-     *
-     * @return stdClass
-     * @link https://green-api.com/en/docs/api/account/GetAuthorizationCode/
-     */
-    public function getAuthorizationCode( int $phoneNumber ): stdClass {
-        $requestBody = [
-            'phoneNumber' => $phoneNumber,
-        ];
-
-        return $this->greenApi->request( 'POST',
-            '{{host}}/waInstance{{idInstance}}/getAuthorizationCode/{{apiTokenInstance}}', $requestBody );
+    public function getWaSettings(): stdClass {
+        return $this->greenApi->request('GET',
+            '{{host}}/waInstance{{idInstance}}/getWaSettings/{{apiTokenInstance}}');
     }
 }

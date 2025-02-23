@@ -76,7 +76,6 @@ class GreenApiClient {
         $this->media = $media;
 
 		$this->account = new Account( $this );
-		$this->device = new Device( $this );
 		$this->groups = new Groups( $this );
 		$this->journals = new Journals( $this );
 		$this->marking = new Marking( $this );
