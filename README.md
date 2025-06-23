@@ -177,6 +177,12 @@ This method will be called when an incoming message is received. Next, process m
 | `serviceMethods.setDisappearingChat`   | The method is designed to change the settings of disappearing messages in chats                                          | [SetDisappearingChat](https://green-api.com/en/docs/api/service/SetDisappearingChat/)                       |
 | `webhooks.startReceivingNotifications` | The method is designed to start receiving new notifications                                                              |                                                                                        |
 | `webhooks.stopReceivingNotifications`  | The method is designed to stop receiving new notifications                                                               |                                                                                       |
+| `statuses.sendTextStatus`   | The method is aimed for sending a text status                                          | [SendTextStatus](https://green-api.com/en/docs/api/statuses/SendTextStatus/)                       |
+| `statuses.sendVoiceStatus`   | The method is aimed for sending a voice status                                        | [SendVoiceStatus](https://green-api.com/en/docs/api/statuses/SendVoiceStatus/)                       |
+| `statuses.sendMediaStatus`   | The method is aimed for sending a pictures or video status                            | [SendMediaStatus](https://green-api.com/en/docs/api/statuses/SendMediaStatus/)                       |
+| `statuses.getIncomingStatuses`   | The method returns the incoming status messages of the instance                   | [GetIncomingStatuses](https://green-api.com/en/docs/api/statuses/GetIncomingStatuses/)                       |
+| `statuses.getOutgoingStatuses`   | The method returns the outgoing statuses of the account                           | [GetOutgoingStatuses](https://green-api.com/en/docs/api/statuses/GetOutgoingStatuses/)                       |
+| `statuses.getStatusStatistic`   | The method returns an array of recipients marked sent/delivered/read for a given status    | [GetStatusStatistic](https://green-api.com/en/docs/api/statuses/GetStatusStatistic/)                       |
 
 ## Service methods documentation
 
