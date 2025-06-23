@@ -10,7 +10,6 @@
 namespace GreenApi\RestApi;
 
 use GreenApi\RestApi\tools\Account;
-use GreenApi\RestApi\tools\Device;
 use GreenApi\RestApi\tools\Groups;
 use GreenApi\RestApi\tools\Journals;
 use GreenApi\RestApi\tools\Marking;
@@ -32,10 +31,6 @@ class GreenApiClient {
 	 * @var Account
 	 */
 	public $account;
-	/**
-	 * @var Device
-	 */
-	public $device;
 	/**
 	 * @var Sending
 	 */
@@ -81,7 +76,6 @@ class GreenApiClient {
         $this->media = $media;
 
 		$this->account = new Account( $this );
-		$this->device = new Device( $this );
 		$this->groups = new Groups( $this );
 		$this->journals = new Journals( $this );
 		$this->marking = new Marking( $this );
@@ -150,7 +144,10 @@ class GreenApiClient {
 				break;
 			case 'POST_BINARY':
 				$mime_type = mime_content_type( $path );
-				$headers = array( 'Content-Type: ' . $mime_type );
+				$headers = array( 
+					'Content-Type: ' . $mime_type ,
+					'GA-Filename:  ' . basename($path)
+			);
 				$filesize = filesize($path);
 				$stream = fopen($path, 'r');
 				curl_setopt( $curl, CURLOPT_PUT, true );

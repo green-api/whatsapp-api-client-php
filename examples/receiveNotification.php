@@ -12,8 +12,6 @@ $greenApi = new GreenApiClient( ID_INSTANCE, API_TOKEN_INSTANCE );
 $greenApi->webhooks->startReceivingNotifications(function($typeWebhook, $body) {
 	if ($typeWebhook == 'incomingMessageReceived') {
 		onIncomingMessageReceived($body);
-	} elseif ($typeWebhook == 'deviceInfo') {
-		onDeviceInfo($body);
 	} elseif ($typeWebhook == 'incomingCall') {
 		onIncomingCall($body);
 	} elseif ($typeWebhook == 'outgoingAPIMessageReceived') {
@@ -50,12 +48,6 @@ function onOutgoingAPIMessageReceived($body) {
 	$senderData = $body->senderData;
 	$messageData =  $body->messageData;
 	print($idMessage . ': At ' . $eventDate . ' Incoming from '. json_encode($senderData, JSON_UNESCAPED_UNICODE) . ' message = ' . json_encode($messageData, JSON_UNESCAPED_UNICODE)).PHP_EOL;
-}
-
-function onDeviceInfo( $body ) {
-	$eventDate = date('Y-m-d H:i:s', $body->timestamp);
-	$deviceData = $body->deviceData;
-	print('At ' . $eventDate . ': ' . json_encode($deviceData, JSON_UNESCAPED_UNICODE)).PHP_EOL;
 }
 
 function onOutgoingMessageReceived($body) {
