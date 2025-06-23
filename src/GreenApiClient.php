@@ -19,6 +19,7 @@ use GreenApi\RestApi\tools\Receiving;
 use GreenApi\RestApi\tools\Sending;
 use GreenApi\RestApi\tools\ServiceMethods;
 use GreenApi\RestApi\tools\Webhooks;
+use GreenApi\RestApi\tools\Statuses;
 use stdClass;
 
 class GreenApiClient {
@@ -67,6 +68,10 @@ class GreenApiClient {
 	 * @var Webhooks
 	 */
 	public $webhooks;
+	/**
+	 * @var Statuses
+	 */
+	public $statuses;
 
 	public function __construct( $idInstance, $apiTokenInstance, $host = "https://api.green-api.com", $media = "https://media.green-api.com" ) {
 
@@ -85,6 +90,7 @@ class GreenApiClient {
 		$this->sending = new Sending( $this );
 		$this->serviceMethods = new ServiceMethods( $this );
 		$this->webhooks = new Webhooks( $this );
+		$this->statuses = new Statuses( $this );
 	}
 
 	/**
