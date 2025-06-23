@@ -175,6 +175,12 @@ body | тело сообщения (json)
 | `serviceMethods.setDisappearingChat`   | Метод предназначен для изменения настроек исчезающих сообщений в чатах                                                    | [SetDisappearingChat](https://green-api.com/docs/api/service/SetDisappearingChat/)                       |
 | `webhooks.startReceivingNotifications` | Метод предназначен для старта получения новых уведомлений                                                                 |                                                                                                          |
 | `webhooks.stopReceivingNotifications`  | Метод предназначен для остановки получения новых уведомлений                                                              |                                                                                                          |
+| `statuses.sendTextStatus`   | Метод предназначен для отправки текстового статуса                        | [SendTextStatus](https://green-api.com/docs/api/statuses/SendTextStatus/)                       |
+| `statuses.sendVoiceStatus`   | Метод предназначен для отправки голосового статуса                       | [SendVoiceStatus](https://green-api.com/docs/api/statuses/SendVoiceStatus/)                       |
+| `statuses.sendMediaStatus`   | Метод предназначен для отправки медиа-файлов                             | [SendMediaStatus](https://green-api.com/docs/api/statuses/SendMediaStatus/)                       |
+| `statuses.getIncomingStatuses`   | Метод возвращает крайние входящие статусы аккаунта                   | [GetIncomingStatuses](https://green-api.com/docs/api/statuses/GetIncomingStatuses/)                       |
+| `statuses.getOutgoingStatuses`   | Метод возвращает крайние отправленные статусы аккаунта               | [GetOutgoingStatuses](https://green-api.com/docs/api/statuses/GetOutgoingStatuses/)                       |
+| `statuses.getStatusStatistic`   | Метод возвращает массив получателей со статусами, отмеченных как отправлено/доставлено/прочитано, для данного статуса    | [GetStatusStatistic](https://green-api.com/docs/api/statuses/GetStatusStatistic/)                       |
 
 ## Документация по методам сервиса
 

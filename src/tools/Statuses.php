@@ -109,27 +109,6 @@ class Statuses {
 	}
 
     /**
-	 * The method returns the incoming status messages of the instance. In the default mode the incoming status messages for 24 hours are returned.
-	 *
-	 * @param int|null $minutes
-	 *
-	 * @return stdClass
-	 * @link https://green-api.com/en/docs/api/statuses/GetIncomingStatuses/
-	 */
-	public function getIncomingStatuses( int $minutes = null ): stdClass {
-
-		$requestBody = null;
-
-        if ($minutes) {
-            $requestBody['minutes'] = $minutes;
-        }
-
-        return $this->greenApi->request(
-            'GET', '{{host}}/waInstance{{idInstance}}/getIncomingStatuses/{{apiTokenInstance}}', $requestBody
-        );
-	}
-
-    /**
 	 * The method returns the outgoing statuses of the account. In the default mode the outgoing status messages for 24 hours are returned.
 	 *
 	 * @param int|null $minutes
@@ -158,15 +137,11 @@ class Statuses {
 	 * @return stdClass
 	 * @link https://green-api.com/en/docs/api/statuses/GetStatusStatistic/
 	 */
-	public function getStatusStatistic( string $idMessage ): stdClass {
-
-		$requestBody = null;
-
+	public function getStatusStatistic(string $idMessage): stdClass {
         return $this->greenApi->request(
             'GET', 
             '{{host}}/waInstance{{idInstance}}/getStatusStatistic/{{apiTokenInstance}}', 
-            $requestBody,
-            ['idMessage' => $idMessage]
+            ['idMessage' => $idMessage]  // This will be added as query parameters
         );
-	}
+    }
 }
