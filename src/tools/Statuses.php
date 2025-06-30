@@ -130,7 +130,7 @@ class Statuses {
 	}
 
     /**
-	 * The method returns the outgoing statuses of the account. In the default mode the outgoing status messages for 24 hours are returned.
+	 * The method returns an array of recipients marked sent/delivered/read for a given status
 	 *
 	 * @param string $idMessage
 	 *
