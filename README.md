@@ -39,7 +39,7 @@ php -S localhost:8080
 ### How to initialize an object
 
 ```
-$greenApi = new GreenApiClient( ID_INSTANCE, API_TOKEN_INSTANCE );
+$greenApi = new GreenApiClient( idInstance: ID_INSTANCE, apiTokenInstance: API_TOKEN_INSTANCE );
 ```
 
 ### Sending a text message to a WhatsApp number
