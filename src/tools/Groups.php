@@ -10,7 +10,7 @@ class Groups {
 	/**
 	 * @param GreenApiClient $greenApi
 	 */
-	private $greenApi;
+    private $greenApi;
 
 	public function __construct( GreenApiClient $greenApi ) {
 		$this->greenApi = $greenApi;
