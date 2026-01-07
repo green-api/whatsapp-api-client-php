@@ -36,7 +36,7 @@ php -S localhost:8080
 ### Как инициализировать объект
 
 ```
-$greenApi = new GreenApiClient( ID_INSTANCE, API_TOKEN_INSTANCE );
+$greenApi = new GreenApiClient( idInstance: ID_INSTANCE, apiTokenInstance: API_TOKEN_INSTANCE );
 ```
 
 ### Отправка текстового сообщения на номер WhatsApp
