@@ -28,44 +28,44 @@ class GreenApiClient {
 	private $apiTokenInstance;
 
 	/**
-	 * @var Account
-	 */
+	 * @var Account|null
+     */
 	public $account;
 	/**
-	 * @var Sending
-	 */
+	 * @var Sending|null
+     */
 	public $sending;
 	/**
-	 * @var Groups
-	 */
+	 * @var Groups|null
+     */
 	public $groups;
 	/**
-	 * @var Journals
-	 */
+	 * @var Journals|null
+     */
 	public $journals;
 	/**
-	 * @var Marking
-	 */
+	 * @var Marking|null
+     */
 	public $marking;
 	/**
-	 * @var Queues
-	 */
+	 * @var Queues|null
+     */
 	public $queues;
 	/**
-	 * @var Receiving
-	 */
+	 * @var Receiving|null
+     */
 	public $receiving;
 	/**
-	 * @var ServiceMethods
-	 */
+	 * @var ServiceMethods|null
+     */
 	public $serviceMethods;
 	/**
-	 * @var Webhooks
-	 */
+	 * @var Webhooks|null
+     */
 	public $webhooks;
 	/**
-	 * @var Statuses
-	 */
+	 * @var Statuses|null
+     */
 	public $statuses;
 
 	public function __construct( $idInstance, $apiTokenInstance, $host = "https://api.green-api.com", $media = "https://media.green-api.com" ) {

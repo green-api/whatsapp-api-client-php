@@ -39,7 +39,7 @@ php -S localhost:8080
 ### How to initialize an object
 
 ```
-$greenApi = new GreenApiClient( ID_INSTANCE, API_TOKEN_INSTANCE );
+$greenApi = new GreenApiClient( idInstance: ID_INSTANCE, apiTokenInstance: API_TOKEN_INSTANCE );
 ```
 
 ### Sending a text message to a WhatsApp number
@@ -183,6 +183,9 @@ This method will be called when an incoming message is received. Next, process m
 | `statuses.getIncomingStatuses`         | The method returns the incoming status messages of the instance                                                          | [GetIncomingStatuses](https://green-api.com/en/docs/api/statuses/GetIncomingStatuses/)                      |
 | `statuses.getOutgoingStatuses`         | The method returns the outgoing statuses of the account                                                                  | [GetOutgoingStatuses](https://green-api.com/en/docs/api/statuses/GetOutgoingStatuses/)                      |
 | `statuses.getStatusStatistic`          | The method returns an array of recipients marked sent/delivered/read for a given status                                  | [GetStatusStatistic](https://green-api.com/en/docs/api/statuses/GetStatusStatistic/)                        |
+| `partner.getInstances`                 | The method is designed to get the instances of the account                                                               | [GetInstances](https://green-api.com/en/docs/partners/getInstances/)                                        |
+| `partner.createInstance`               | The method is designed to create the instance in the account                                                             | [CreateInstance](https://green-api.com/en/docs/partners/createInstance/)                                    |
+| `partner.deleteInstanceAccount`        | The method is designed to remove the instance in the account                                                             | [GetStatusStatistic](https://green-api.com/en/docs/partners/deleteInstanceAccount/)                         |
 
 ## Service methods documentation
 

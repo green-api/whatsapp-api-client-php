@@ -36,7 +36,7 @@ php -S localhost:8080
 ### Как инициализировать объект
 
 ```
-$greenApi = new GreenApiClient( ID_INSTANCE, API_TOKEN_INSTANCE );
+$greenApi = new GreenApiClient( idInstance: ID_INSTANCE, apiTokenInstance: API_TOKEN_INSTANCE );
 ```
 
 ### Отправка текстового сообщения на номер WhatsApp
@@ -181,6 +181,9 @@ body | тело сообщения (json)
 | `statuses.getIncomingStatuses`         | Метод возвращает крайние входящие статусы аккаунта                                                                        | [GetIncomingStatuses](https://green-api.com/docs/api/statuses/GetIncomingStatuses/)                      |
 | `statuses.getOutgoingStatuses`         | Метод возвращает крайние отправленные статусы аккаунта                                                                    | [GetOutgoingStatuses](https://green-api.com/docs/api/statuses/GetOutgoingStatuses/)                      |
 | `statuses.getStatusStatistic`          | Метод возвращает массив получателей со статусами, отмеченных как отправлено/доставлено/прочитано, для данного статуса     | [GetStatusStatistic](https://green-api.com/docs/api/statuses/GetStatusStatistic/)                        |
+| `partner.getInstances`                 | Метод предназначен для получения инстансов аккаунта                                                                       | [GetInstances](https://green-api.com/en/docs/partners/getInstances/)                                     |
+| `partner.createInstance`               | Метод предназначен для создания инстанса в аккаунте                                                                       | [CreateInstance](https://green-api.com/en/docs/partners/createInstance/)                                 |
+| `partner.deleteInstanceAccount`        | Метод предназначен для удаления инстанса в аккаунте                                                                       | [GetStatusStatistic](https://green-api.com/en/docs/partners/deleteInstanceAccount/)                      |
 
 ## Документация по методам сервиса
 
