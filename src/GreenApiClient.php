@@ -117,6 +117,7 @@ class GreenApiClient {
         $url = str_replace( '{{media}}', $this->media, $url );
 		$url = str_replace( '{{idInstance}}', $this->idInstance, $url );
 		$url = str_replace( '{{apiTokenInstance}}', $this->apiTokenInstance, $url );
+        $url = str_replace( '{{partnerToken}}', $this->partnerToken, $url );
 
 		$method = strtoupper( $method );
 		$curl = curl_init();
