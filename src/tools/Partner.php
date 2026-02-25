@@ -69,11 +69,12 @@ class Partner {
      *
      * The method is used to deleting an instance of the partner's account.
      *
+     * @param $idInstance
      * @return stdClass
      * @link https://green-api.com/en/docs/partners/deleteInstanceAccount/
      */
-    public function deleteInstanceAccount(): stdClass {
-        return $this->greenApi->request('GET',
-            '{{host}}/partner/deleteInstanceAccount/{{partnerToken}}');
+    public function deleteInstanceAccount($idInstance): stdClass {
+        return $this->greenApi->request('POST',
+            '{{host}}/partner/deleteInstanceAccount/{{partnerToken}}', ['idInstance' => $idInstance]);
     }
 }

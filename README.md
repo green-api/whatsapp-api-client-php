@@ -185,7 +185,7 @@ This method will be called when an incoming message is received. Next, process m
 | `statuses.getStatusStatistic`          | The method returns an array of recipients marked sent/delivered/read for a given status                                  | [GetStatusStatistic](https://green-api.com/en/docs/api/statuses/GetStatusStatistic/)                        |
 | `partner.getInstances`                 | The method is designed to get the instances of the account                                                               | [GetInstances](https://green-api.com/en/docs/partners/getInstances/)                                        |
 | `partner.createInstance`               | The method is designed to create the instance in the account                                                             | [CreateInstance](https://green-api.com/en/docs/partners/createInstance/)                                    |
-| `partner.deleteInstanceAccount`        | The method is designed to remove the instance in the account                                                             | [GetStatusStatistic](https://green-api.com/en/docs/partners/deleteInstanceAccount/)                         |
+| `partner.deleteInstanceAccount`        | The method is designed to remove the instance in the account                                                             | [DeleteInstanceAccount](https://green-api.com/en/docs/partners/deleteInstanceAccount/)                      |
 
 ## Service methods documentation
 

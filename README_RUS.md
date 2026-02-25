@@ -183,7 +183,7 @@ body | тело сообщения (json)
 | `statuses.getStatusStatistic`          | Метод возвращает массив получателей со статусами, отмеченных как отправлено/доставлено/прочитано, для данного статуса     | [GetStatusStatistic](https://green-api.com/docs/api/statuses/GetStatusStatistic/)                        |
 | `partner.getInstances`                 | Метод предназначен для получения инстансов аккаунта                                                                       | [GetInstances](https://green-api.com/en/docs/partners/getInstances/)                                     |
 | `partner.createInstance`               | Метод предназначен для создания инстанса в аккаунте                                                                       | [CreateInstance](https://green-api.com/en/docs/partners/createInstance/)                                 |
-| `partner.deleteInstanceAccount`        | Метод предназначен для удаления инстанса в аккаунте                                                                       | [GetStatusStatistic](https://green-api.com/en/docs/partners/deleteInstanceAccount/)                      |
+| `partner.deleteInstanceAccount`        | Метод предназначен для удаления инстанса в аккаунте                                                                       | [DeleteInstanceAccount](https://green-api.com/en/docs/partners/deleteInstanceAccount/)                   |
 
 ## Документация по методам сервиса
 
