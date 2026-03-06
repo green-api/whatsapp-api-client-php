@@ -19,72 +19,85 @@ use GreenApi\RestApi\tools\Sending;
 use GreenApi\RestApi\tools\ServiceMethods;
 use GreenApi\RestApi\tools\Webhooks;
 use GreenApi\RestApi\tools\Statuses;
+use GreenApi\RestApi\tools\Partner;
 use stdClass;
 
 class GreenApiClient {
 	private $host;
     private $media;
-	private $idInstance;
-	private $apiTokenInstance;
+	private $idInstance = null;
+	private $apiTokenInstance = null;
+    private $partnerToken = null;
 
 	/**
-	 * @var Account
+	 * @var Account|null
 	 */
 	public $account;
 	/**
-	 * @var Sending
+	 * @var Sending|null
 	 */
 	public $sending;
 	/**
-	 * @var Groups
+	 * @var Groups|null
 	 */
 	public $groups;
 	/**
-	 * @var Journals
+	 * @var Journals|null
 	 */
 	public $journals;
 	/**
-	 * @var Marking
+	 * @var Marking|null
 	 */
 	public $marking;
 	/**
-	 * @var Queues
+	 * @var Queues|null
 	 */
 	public $queues;
 	/**
-	 * @var Receiving
+	 * @var Receiving|null
 	 */
 	public $receiving;
 	/**
-	 * @var ServiceMethods
+	 * @var ServiceMethods|null
 	 */
 	public $serviceMethods;
 	/**
-	 * @var Webhooks
+	 * @var Webhooks|null
 	 */
 	public $webhooks;
 	/**
-	 * @var Statuses
+	 * @var Statuses|null
 	 */
 	public $statuses;
+	/**
+	 * @var Partner|null
+	 */
+	public $partner;
 
-	public function __construct( $idInstance, $apiTokenInstance, $host = "https://api.green-api.com", $media = "https://media.green-api.com" ) {
+	public function __construct( $idInstance = null, $apiTokenInstance = null, $partnerToken = null, $host = "https://api.green-api.com", $media = "https://media.green-api.com" ) {
 
-		$this->idInstance = $idInstance;
-		$this->apiTokenInstance = $apiTokenInstance;
-		$this->host = $host;
+        $this->idInstance = $idInstance;
+        $this->apiTokenInstance = $apiTokenInstance;
+        $this->host = $host;
         $this->media = $media;
+        $this->partnerToken = $partnerToken;
 
-		$this->account = new Account( $this );
-		$this->groups = new Groups( $this );
-		$this->journals = new Journals( $this );
-		$this->marking = new Marking( $this );
-		$this->queues = new Queues( $this );
-		$this->receiving = new Receiving( $this );
-		$this->sending = new Sending( $this );
-		$this->serviceMethods = new ServiceMethods( $this );
-		$this->webhooks = new Webhooks( $this );
-		$this->statuses = new Statuses( $this );
+        if ($this->idInstance && $this->apiTokenInstance) {
+            $this->account = new Account( $this );
+            $this->groups = new Groups( $this );
+            $this->journals = new Journals( $this );
+            $this->marking = new Marking( $this );
+            $this->queues = new Queues( $this );
+            $this->receiving = new Receiving( $this );
+            $this->sending = new Sending( $this );
+            $this->serviceMethods = new ServiceMethods( $this );
+            $this->webhooks = new Webhooks( $this );
+            $this->statuses = new Statuses( $this );
+        }
+
+        if ($this->partnerToken) {
+            $this->partner = new Partner( $this );
+        }
 	}
 
 	/**
@@ -104,6 +117,7 @@ class GreenApiClient {
         $url = str_replace( '{{media}}', $this->media, $url );
 		$url = str_replace( '{{idInstance}}', $this->idInstance, $url );
 		$url = str_replace( '{{apiTokenInstance}}', $this->apiTokenInstance, $url );
+        $url = str_replace( '{{partnerToken}}', $this->partnerToken, $url );
 
 		$method = strtoupper( $method );
 		$curl = curl_init();
@@ -144,7 +158,7 @@ class GreenApiClient {
 				break;
 			case 'POST_BINARY':
 				$mime_type = mime_content_type( $path );
-				$headers = array( 
+				$headers = array(
 					'Content-Type: ' . $mime_type ,
 					'GA-Filename:  ' . basename($path)
 			);
