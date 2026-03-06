@@ -61,7 +61,7 @@ class Partner {
 
         $requestParameters = array_filter(array_merge($defaultParameters, $payload));
 
-        return $this->greenApi->request('GET',
+        return $this->greenApi->request('POST',
             '{{host}}/partner/createInstance/{{partnerToken}}', $requestParameters);
     }
 
