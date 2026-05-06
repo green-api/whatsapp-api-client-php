@@ -10,6 +10,7 @@
 namespace GreenApi\RestApi;
 
 use GreenApi\RestApi\tools\Account;
+use GreenApi\RestApi\tools\Contacts;
 use GreenApi\RestApi\tools\Groups;
 use GreenApi\RestApi\tools\Journals;
 use GreenApi\RestApi\tools\Marking;
@@ -31,6 +32,10 @@ class GreenApiClient {
 	 * @var Account
 	 */
 	public $account;
+	/**
+	 * @var Contacts
+	 */
+	public $contacts;
 	/**
 	 * @var Sending
 	 */
@@ -76,6 +81,7 @@ class GreenApiClient {
         $this->media = $media;
 
 		$this->account = new Account( $this );
+		$this->contacts = new Contacts( $this );
 		$this->groups = new Groups( $this );
 		$this->journals = new Journals( $this );
 		$this->marking = new Marking( $this );

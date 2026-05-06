@@ -122,6 +122,7 @@ body | тело сообщения (json)
 | Пример отправки картинки загрузкой с диска           | [sendPictureByUpload.php](https://github.com/green-api/whatsapp-api-client-php/blob/master/examples/sendPictureByUpload.php)             |
 | Пример создание группы и отправка сообщения в группу | [createGroupAndSendMessage.php](https://github.com/green-api/whatsapp-api-client-php/blob/master/examples/createGroupAndSendMessage.php) |
 | Пример получения входящих уведомлений                | [receiveNotification.php](https://github.com/green-api/whatsapp-api-client-php/blob/master/examples/receiveNotification.php)             |
+| Как работать с контактами                            | [contactsMethods.php](https://github.com/green-api/whatsapp-api-client-php/blob/master/examples/contactsMethods.php)                   |
 
 ## Полный список методов библиотеки
 
@@ -136,6 +137,9 @@ body | тело сообщения (json)
 | `account.qr`                           | Метод предназначен для получения QR-кода                                                                                  | [QR](https://green-api.com/docs/api/account/QR/)                                                         |
 | `account.setProfilePicture`            | Метод предназначен для установки аватара аккаунта                                                                         | [SetProfilePicture](https://green-api.com/docs/api/account/SetProfilePicture/)                           |
 | `account.getAuthorizationCode`         | Метод предназначен для авторизации инстанса по номеру телефона                                                            | [GetAuthorizationCode](https://green-api.com/docs/api/account/GetAuthorizationCode/)                     |
+| `contacts.addContact()`                | Метод предназначен для добавления контакта                                                                                | [AddContact](https://green-api.com/docs/api/contacts/AddContact)                              |
+| `contacts.editContact()`               | Метод предназначен для изменения контакта                                                                                 | [EditContact](https://green-api.com/docs/api/contacts/EditContact)                             |
+| `contacts.deleteContact()`             | Метод предназначен для удаления контакта                                                                                  | [DeleteContact](https://green-api.com/docs/api/contacts/DeleteContact)                  |
 | `groups.createGroup`                   | Метод предназначен для создания группового чата                                                                           | [CreateGroup](https://green-api.com/docs/api/groups/CreateGroup/)                                        |
 | `groups.updateGroupName`               | Метод изменяет наименование группового чата                                                                               | [UpdateGroupName](https://green-api.com/docs/api/groups/UpdateGroupName/)                                |
 | `groups.getGroupData`                  | Метод получает данные группового чата                                                                                     | [GetGroupData](https://green-api.com/docs/api/groups/GetGroupData/)                                      |

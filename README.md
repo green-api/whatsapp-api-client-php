@@ -124,6 +124,7 @@ This method will be called when an incoming message is received. Next, process m
 | Example of sending a picture by uploading from the disk        | [sendPictureByUpload.php](https://github.com/green-api/whatsapp-api-client-php/blob/master/examples/sendPictureByUpload.php)             |
 | Example of a group creation and sending a message to the group | [createGroupAndSendMessage.php](https://github.com/green-api/whatsapp-api-client-php/blob/master/examples/createGroupAndSendMessage.php) |
 | Example of incoming webhooks receiving                         | [receiveNotification.php](https://github.com/green-api/whatsapp-api-client-php/blob/master/examples/receiveNotification.php)             |
+| Example if working with contacts                               | [contactsMethods.php](https://github.com/green-api/whatsapp-api-client-php/blob/master/examples/contactsMethods.php)                 |
 
 ## The full list of the library methods
 
@@ -138,6 +139,9 @@ This method will be called when an incoming message is received. Next, process m
 | `account.qr`                           | The method is designed to get a QR code                                                                                  | [QR](https://green-api.com/en/docs/api/account/QR/)                                                         |
 | `account.getAuthorizationCode`         | The method is designed to authorize an instance by phone number                                                          | [GetAuthorizationCode](https://green-api.com/en/docs/api/account/GetAuthorizationCode/)                     |
 | `account.setProfilePicture`            | The method is designed to set the avatar of the account                                                                  | [SetProfilePicture](https://green-api.com/en/docs/api/account/SetProfilePicture/)                           |
+| `contacts.addContact()`                | The method is aimed for adding a number to contacts                                                                      | [AddContact](https://green-api.com/en/docs/api/contacts/AddContact)                                    |
+| `contacts.editContact()`               | The method is used to edit a number in contacts                                                                          | [EditContact](https://green-api.com/en/docs/api/contacts/EditContact)                                     |
+| `contacts.deleteContact()`             | The method is used to remove a number from contacts                                                                      | [DeleteContact](https://green-api.com/en/docs/api/contacts/DeleteContact)                  |
 | `groups.createGroup`                   | The method is designed to create a group chat                                                                            | [CreateGroup](https://green-api.com/en/docs/api/groups/CreateGroup/)                                        |
 | `groups.updateGroupName`               | The method changes the name of the group chat                                                                            | [UpdateGroupName](https://green-api.com/en/docs/api/groups/UpdateGroupName/)                                |
 | `groups.getGroupData`                  | The method gets group chat data                                                                                          | [GetGroupData](https://green-api.com/en/docs/api/groups/GetGroupData/)                                      |
