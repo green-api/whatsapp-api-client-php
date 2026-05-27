@@ -28,6 +28,7 @@ class GreenApiClient {
     private $media;
 	private $idInstance; = null;
 	private $apiTokenInstance; = null;
+	private $partnerToken = null;
 
 	/**
 	 * @var Account
@@ -87,21 +88,23 @@ class GreenApiClient {
 		$this->host = $host;
         $this->media = $media;
 
+		if ($this->idInstance && $this->apiTokenInstance) {
+			$this->account = new Account( $this );
+			$this->contacts = new Contacts( $this );
+			$this->groups = new Groups( $this );
+			$this->journals = new Journals( $this );
+			$this->marking = new Marking( $this );
+			$this->queues = new Queues( $this );
+			$this->receiving = new Receiving( $this );
+			$this->sending = new Sending( $this );
+			$this->serviceMethods = new ServiceMethods( $this );
+			$this->webhooks = new Webhooks( $this );
+			$this->statuses = new Statuses( $this );
+		}
+
 		if ($this->partnerToken) {
             $this->partner = new Partner( $this );
         }
-
-		$this->account = new Account( $this );
-		$this->contacts = new Contacts( $this );
-		$this->groups = new Groups( $this );
-		$this->journals = new Journals( $this );
-		$this->marking = new Marking( $this );
-		$this->queues = new Queues( $this );
-		$this->receiving = new Receiving( $this );
-		$this->sending = new Sending( $this );
-		$this->serviceMethods = new ServiceMethods( $this );
-		$this->webhooks = new Webhooks( $this );
-		$this->statuses = new Statuses( $this );
 	}
 
 	/**
