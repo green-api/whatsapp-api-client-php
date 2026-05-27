@@ -20,13 +20,14 @@ use GreenApi\RestApi\tools\Sending;
 use GreenApi\RestApi\tools\ServiceMethods;
 use GreenApi\RestApi\tools\Webhooks;
 use GreenApi\RestApi\tools\Statuses;
+use GreenApi\RestApi\tools\Partner;
 use stdClass;
 
 class GreenApiClient {
 	private $host;
     private $media;
-	private $idInstance;
-	private $apiTokenInstance;
+	private $idInstance; = null;
+	private $apiTokenInstance; = null;
 
 	/**
 	 * @var Account
@@ -72,13 +73,23 @@ class GreenApiClient {
 	 * @var Statuses
 	 */
 	public $statuses;
+	/**
+	 * @var Partner|null
+	 */
+	public $partner;
 
-	public function __construct( $idInstance, $apiTokenInstance, $host = "https://api.green-api.com", $media = "https://media.green-api.com" ) {
+	public function __construct( $idInstance = null, $apiTokenInstance = null, $partnerToken = null, $host = "https://api.green-api.com", $media = "https://media.green-api.com" ) {
 
 		$this->idInstance = $idInstance;
 		$this->apiTokenInstance = $apiTokenInstance;
+		$this->partnerToken = $partnerToken;
+		
 		$this->host = $host;
         $this->media = $media;
+
+		if ($this->partnerToken) {
+            $this->partner = new Partner( $this );
+        }
 
 		$this->account = new Account( $this );
 		$this->contacts = new Contacts( $this );
@@ -110,7 +121,7 @@ class GreenApiClient {
         $url = str_replace( '{{media}}', $this->media, $url );
 		$url = str_replace( '{{idInstance}}', $this->idInstance, $url );
 		$url = str_replace( '{{apiTokenInstance}}', $this->apiTokenInstance, $url );
-
+		$url = str_replace( '{{partnerToken}}', $this->partnerToken, $url );
 		$method = strtoupper( $method );
 		$curl = curl_init();
 
