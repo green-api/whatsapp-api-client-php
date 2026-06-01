@@ -26,8 +26,8 @@ use stdClass;
 class GreenApiClient {
 	private $host;
     private $media;
-	private $idInstance; = null;
-	private $apiTokenInstance; = null;
+	private $idInstance = null;
+	private $apiTokenInstance = null;
 	private $partnerToken = null;
 
 	/**
