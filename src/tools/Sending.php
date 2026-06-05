@@ -69,7 +69,7 @@ class Sending {
 	 * @return stdClass
 	 * @link https://green-api.com/en/docs/api/sending/SendContact/
 	 */
-	public function sendContact( string $chatId, array $contact, string $quotedMessageId = null ): stdClass {
+	public function sendContact( string $chatId, array $contact, string $quotedMessageId = null, ?int $typingTime = null ): stdClass {
 
 		$requestBody = [
 			'chatId' => $chatId,
@@ -78,6 +78,10 @@ class Sending {
 
 		if ( $quotedMessageId ) {
 			$requestBody['quotedMessageId'] = $quotedMessageId;
+		}
+
+		if ( $typingTime !== null ) {
+			$requestBody['typingTime'] = $typingTime;
 		}
 
 		return $this->greenApi->request( 'POST',
@@ -101,7 +105,7 @@ class Sending {
 	 * @link https://green-api.com/en/docs/api/sending/SendFileByUpload/
 	 */
 	public function sendFileByUpload(
-		string $chatId, string $path, string $fileName = null, string $caption = null, string $quotedMessageId = null
+		string $chatId, string $path, string $fileName = null, string $caption = null, string $quotedMessageId = null, ?int $typingTime = null, ?string $typingType = null
 	): stdClass {
 
 		if ( ! $fileName ) {
@@ -120,6 +124,14 @@ class Sending {
 		}
 		if ( $quotedMessageId ) {
 			$requestBody['quotedMessageId'] = $quotedMessageId;
+		}
+
+		if ( $typingTime !== null ) {
+			$requestBody['typingTime'] = $typingTime;
+		}
+
+		if ( $typingType !== null ) {
+			$requestBody['typingType'] = $typingType;
 		}
 
 		return $this->greenApi->request( 'POST',
@@ -146,7 +158,7 @@ class Sending {
 	 */
 	public function sendFileByUrl(
 		string $chatId, string $urlFile, string $fileName = null, string $caption = null, string $quotedMessageId = null,
-		bool $archiveChat = false
+		bool $archiveChat = false, ?int $typingTime = null, ?string $typingType = null
 	): stdClass {
 
 		if ( ! $fileName ) {
@@ -169,6 +181,14 @@ class Sending {
 
 		if ( $archiveChat ) {
 			$requestBody['archiveChat'] = $archiveChat;
+		}
+
+		if ( $typingTime !== null ) {
+			$requestBody['typingTime'] = $typingTime;
+		}
+
+		if ( $typingType !== null ) {
+			$requestBody['typingType'] = $typingType;
 		}
 
 		return $this->greenApi->request( 'POST',
@@ -271,8 +291,8 @@ class Sending {
 	 * @link https://green-api.com/en/docs/api/sending/SendLocation/
 	 */
 	public function sendLocation(
-		string $chatId, float $latitude, float $longitude, string $nameLocation = null, string $address = null,
-		string $quotedMessageId = null
+		string $chatId, float $latitude, float $longitude, string $nameLocation = null, string $address = null, 
+		string $quotedMessageId = null, ?int $typingTime = null
 	): stdClass {
 
 		$requestBody = [
@@ -289,6 +309,9 @@ class Sending {
 		}
 		if ( $quotedMessageId ) {
 			$requestBody['quotedMessageId'] = $quotedMessageId;
+		}
+		if ( $typingTime !== null ) {
+			$requestBody['typingTime'] = $typingTime;
 		}
 
 		return $this->greenApi->request( 'POST',
@@ -311,7 +334,7 @@ class Sending {
 	 * @link https://green-api.com/en/docs/api/sending/SendMessage/
 	 */
 	public function sendMessage(
-		string $chatId, string $message, string $quotedMessageId = null, bool $archiveChat = false
+		string $chatId, string $message, string $quotedMessageId = null, bool $archiveChat = false, ?int $typingTime = null
 	): stdClass {
 
 		$requestBody = [
@@ -325,6 +348,10 @@ class Sending {
 
 		if ( $archiveChat ) {
 			$requestBody['archiveChat'] = $archiveChat;
+		}
+
+		if ( $typingTime !== null ) {
+			$requestBody['typingTime'] = $typingTime;
 		}
 
 		return $this->greenApi->request( 'POST',
@@ -387,13 +414,17 @@ class Sending {
 	 * @return stdClass
 	 * @link https://green-api.com/en/docs/api/sending/ForwardMessages/
 	 */
-	public function forwardMessages( string $chatId, string $chatIdFrom, array $messages ): stdClass {
+	public function forwardMessages( string $chatId, string $chatIdFrom, array $messages, ?int $typingTime = null ): stdClass {
 
 		$requestBody = [
 			'chatId' => $chatId,
 			'chatIdFrom' => $chatIdFrom,
 			'messages' => $messages
 		];
+
+		if ( $typingTime !== null ) {
+			$requestBody['typingTime'] = $typingTime;
+		}
 
 		return $this->greenApi->request( 'POST',
 			'{{host}}/waInstance{{idInstance}}/ForwardMessages/{{apiTokenInstance}}', $requestBody );
