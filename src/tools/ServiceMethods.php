@@ -117,17 +117,17 @@ class ServiceMethods {
 	 * @return stdClass
 	 * @link https://green-api.com/en/docs/api/service/SendTyping/
 	 */
-	public function sendTyping( string $chatId, ?int $typingTime = null, ?string $typingType = null ): stdClass {
+	public function sendTyping( string $chatId, int $typingTime = null, string $typingType = null ): stdClass {
 
 		$requestBody = [
 			'chatId' => $chatId,
 		];
 
-		if ( $typingTime !== null ) {
+		if ( $typingTime ) {
 			$requestBody['typingTime'] = $typingTime;
 		}
 
-		if ( $typingType !== null ) {
+		if ( $typingType ) {
 			$requestBody['typingType'] = $typingType;
 		}
 
