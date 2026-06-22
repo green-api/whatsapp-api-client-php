@@ -108,6 +108,34 @@ class ServiceMethods {
 
 
 	/**
+	 * The method is intended for sending a typing or audio recording notification to a chat.
+	 *
+	 * @param string $chatId
+	 * @param int|null $typingTime
+	 * @param string|null $typingType
+	 *
+	 * @return stdClass
+	 * @link https://green-api.com/en/docs/api/service/SendTyping/
+	 */
+	public function sendTyping( string $chatId, int $typingTime = null, string $typingType = null ): stdClass {
+
+		$requestBody = [
+			'chatId' => $chatId,
+		];
+
+		if ( $typingTime ) {
+			$requestBody['typingTime'] = $typingTime;
+		}
+
+		if ( $typingType ) {
+			$requestBody['typingType'] = $typingType;
+		}
+
+		return $this->greenApi->request( 'POST',
+			'{{host}}/waInstance{{idInstance}}/sendTyping/{{apiTokenInstance}}', $requestBody );
+	}
+
+	/**
 	 * The method deletes a message from a chat.
 	 *
 	 * @param string $chatId

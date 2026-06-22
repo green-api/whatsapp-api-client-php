@@ -56,6 +56,22 @@ define( "ID_INSTANCE", getenv("ID_INSTANCE" ));
 define( "API_TOKEN_INSTANCE", getenv("API_TOKEN_INSTANCE") );
 ```
 
+### Отправка уведомления о наборе текста
+
+```
+$result = $greenApi->serviceMethods->sendTyping('11001234567@c.us', 5000);
+```
+
+Ссылка на пример: [sendTyping.php](https://github.com/green-api/whatsapp-api-client-php/blob/master/examples/sendTyping.php)
+
+### Отправка уведомления о записи аудио
+
+```
+$result = $greenApi->serviceMethods->sendTyping('11001234567@c.us', 5000, 'recording');
+```
+
+Ссылка на пример: [sendTyping.php](https://github.com/green-api/whatsapp-api-client-php/blob/master/examples/sendTyping.php)
+
 ### Отправка картинки по URL
 
 ```
@@ -118,6 +134,7 @@ body | тело сообщения (json)
 | Описание                                             | Модуль                                                                                                                                   |
 |------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------|
 | Пример отправки текста                               | [sendTextMessage.php](https://github.com/green-api/whatsapp-api-client-php/blob/master/examples/sendTextMessage.php)                     |
+| Пример отправки уведомления о наборе текста или записи аудио | [sendTyping.php](https://github.com/green-api/whatsapp-api-client-php/blob/master/examples/sendTyping.php)                     |
 | Пример отправки картинки по URL                      | [sendPictureByLink.php](https://github.com/green-api/whatsapp-api-client-php/blob/master/examples/sendPictureByLink.php)                 |
 | Пример отправки картинки загрузкой с диска           | [sendPictureByUpload.php](https://github.com/green-api/whatsapp-api-client-php/blob/master/examples/sendPictureByUpload.php)             |
 | Пример создание группы и отправка сообщения в группу | [createGroupAndSendMessage.php](https://github.com/green-api/whatsapp-api-client-php/blob/master/examples/createGroupAndSendMessage.php) |
@@ -177,6 +194,7 @@ body | тело сообщения (json)
 | `serviceMethods.archiveChat`           | Метод архивирует чат                                                                                                      | [ArchiveChat](https://green-api.com/docs/api/service/archiveChat/)                                       |
 | `serviceMethods.unarchiveChat`         | Метод разархивирует чат                                                                                                   | [UnarchiveChat](https://green-api.com/docs/api/service/unarchiveChat/)                                   |
 | `serviceMethods.setDisappearingChat`   | Метод предназначен для изменения настроек исчезающих сообщений в чатах                                                    | [SetDisappearingChat](https://green-api.com/docs/api/service/SetDisappearingChat/)                       |
+| `serviceMethods.sendTyping`            | Метод предназначен для отправки уведомления о наборе текста или записи аудио в чат                                        | [SendTyping](https://green-api.com/docs/api/service/SendTyping/)                                        |
 | `webhooks.startReceivingNotifications` | Метод предназначен для старта получения новых уведомлений                                                                 |                                                                                                          |
 | `webhooks.stopReceivingNotifications`  | Метод предназначен для остановки получения новых уведомлений                                                              |                                                                                                          |
 | `statuses.sendTextStatus`              | Метод предназначен для отправки текстового статуса                                                                        | [SendTextStatus](https://green-api.com/docs/api/statuses/SendTextStatus/)                                |

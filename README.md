@@ -59,6 +59,22 @@ define( "ID_INSTANCE", getenv("ID_INSTANCE" ));
 define( "API_TOKEN_INSTANCE", getenv("API_TOKEN_INSTANCE") );
 ```
 
+### Sending a typing notification
+
+```
+$result = $greenApi->serviceMethods->sendTyping('11001234567@c.us', 5000);
+```
+
+Example url: [sendTyping.php](https://github.com/green-api/whatsapp-api-client-php/blob/master/examples/sendTyping.php)
+
+### Sending an audio recording notification
+
+```
+$result = $greenApi->serviceMethods->sendTyping('11001234567@c.us', 5000, 'recording');
+```
+
+Example url: [sendTyping.php](https://github.com/green-api/whatsapp-api-client-php/blob/master/examples/sendTyping.php)
+
 ### Sending an image via URL
 
 ```
@@ -120,6 +136,7 @@ This method will be called when an incoming message is received. Next, process m
 | Description                                                    | Module                                                                                                                                   |
 |----------------------------------------------------------------|------------------------------------------------------------------------------------------------------------------------------------------|
 | Example of sending text                                        | [sendTextMessage.php](https://github.com/green-api/whatsapp-api-client-php/blob/master/examples/sendTextMessage.php)                     |
+| Example of sending typing or audio recording notification       | [sendTyping.php](https://github.com/green-api/whatsapp-api-client-php/blob/master/examples/sendTyping.php)                               |
 | Example of sending a picture by URL                            | [sendPictureByLink.php](https://github.com/green-api/whatsapp-api-client-php/blob/master/examples/sendPictureByLink.php)                 |
 | Example of sending a picture by uploading from the disk        | [sendPictureByUpload.php](https://github.com/green-api/whatsapp-api-client-php/blob/master/examples/sendPictureByUpload.php)             |
 | Example of a group creation and sending a message to the group | [createGroupAndSendMessage.php](https://github.com/green-api/whatsapp-api-client-php/blob/master/examples/createGroupAndSendMessage.php) |
@@ -179,6 +196,7 @@ This method will be called when an incoming message is received. Next, process m
 | `serviceMethods.archiveChat`           | The method archives the chat                                                                                             | [ArchiveChat](https://green-api.com/en/docs/api/service/archiveChat/)                                       |
 | `serviceMethods.unarchiveChat`         | The method unarchives the chat                                                                                           | [UnarchiveChat](https://green-api.com/en/docs/api/service/unarchiveChat/)                                   |
 | `serviceMethods.setDisappearingChat`   | The method is designed to change the settings of disappearing messages in chats                                          | [SetDisappearingChat](https://green-api.com/en/docs/api/service/SetDisappearingChat/)                       |
+| `serviceMethods.sendTyping`            | The method is designed to send a typing or audio recording notification to a chat                                         | [SendTyping](https://green-api.com/en/docs/api/service/SendTyping/)                                      |
 | `webhooks.startReceivingNotifications` | The method is designed to start receiving new notifications                                                              |                                                                                                             |
 | `webhooks.stopReceivingNotifications`  | The method is designed to stop receiving new notifications                                                               |                                                                                                             |
 | `statuses.sendTextStatus`              | The method is aimed for sending a text status                                                                            | [SendTextStatus](https://green-api.com/en/docs/api/statuses/SendTextStatus/)                                |
