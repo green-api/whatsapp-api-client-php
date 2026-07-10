@@ -192,4 +192,35 @@ class Groups {
 		return $this->greenApi->request( 'POST',
 			'{{host}}/waInstance{{idInstance}}/UpdateGroupName/{{apiTokenInstance}}', $requestBody );
 	}
+
+	/**
+	 * The method changes group chat settings. The functionality is in beta mode. Functions can be changed and may
+	 * also work unstably.
+	 *
+	 * @param string $groupId
+	 * @param bool|null $allowParticipantsEditGroupSettings
+	 * @param bool|null $allowParticipantsSendMessages
+	 *
+	 * @return stdClass
+	 * @link https://green-api.com/en/docs/api/groups/UpdateGroupSettings/
+	 */
+	public function updateGroupSettings(
+		string $groupId, ?bool $allowParticipantsEditGroupSettings = null, ?bool $allowParticipantsSendMessages = null
+	): stdClass {
+
+		$requestBody = [
+			'groupId' => $groupId,
+		];
+
+		if ( $allowParticipantsEditGroupSettings !== null ) {
+			$requestBody['allowParticipantsEditGroupSettings'] = $allowParticipantsEditGroupSettings;
+		}
+
+		if ( $allowParticipantsSendMessages !== null ) {
+			$requestBody['allowParticipantsSendMessages'] = $allowParticipantsSendMessages;
+		}
+
+		return $this->greenApi->request( 'POST',
+			'{{host}}/waInstance{{idInstance}}/updateGroupSettings/{{apiTokenInstance}}', $requestBody );
+	}
 }

@@ -31,10 +31,11 @@ class Sending {
 	 *
 	 * @return stdClass
 	 * @link https://green-api.com/en/docs/api/sending/SendButtons/
+	 * @deprecated Use sendInteractiveButtons() instead
 	 */
 	public function sendButtons(
 		string $chatId, string $message, string $footer, array $buttons,
-		string $quotedMessageId = null, bool $archiveChat = false
+		?string $quotedMessageId = null, bool $archiveChat = false
 	): stdClass {
 
 		$requestBody = [
@@ -69,7 +70,7 @@ class Sending {
 	 * @return stdClass
 	 * @link https://green-api.com/en/docs/api/sending/SendContact/
 	 */
-	public function sendContact( string $chatId, array $contact, string $quotedMessageId = null, int $typingTime = null ): stdClass {
+	public function sendContact( string $chatId, array $contact, ?string $quotedMessageId = null, ?int $typingTime = null ): stdClass {
 
 		$requestBody = [
 			'chatId' => $chatId,
@@ -105,7 +106,7 @@ class Sending {
 	 * @link https://green-api.com/en/docs/api/sending/SendFileByUpload/
 	 */
 	public function sendFileByUpload(
-		string $chatId, string $path, string $fileName = null, string $caption = null, string $quotedMessageId = null, int $typingTime = null, string $typingType = null
+		string $chatId, string $path, ?string $fileName = null, ?string $caption = null, ?string $quotedMessageId = null, ?int $typingTime = null, ?string $typingType = null
 	): stdClass {
 
 		if ( ! $fileName ) {
@@ -157,8 +158,8 @@ class Sending {
 	 * @link https://green-api.com/en/docs/api/sending/SendFileByUrl/
 	 */
 	public function sendFileByUrl(
-		string $chatId, string $urlFile, string $fileName = null, string $caption = null, string $quotedMessageId = null,
-		bool $archiveChat = false, int $typingTime = null, string $typingType = null
+		string $chatId, string $urlFile, ?string $fileName = null, ?string $caption = null, ?string $quotedMessageId = null,
+		bool $archiveChat = false, ?int $typingTime = null, ?string $typingType = null
 	): stdClass {
 
 		if ( ! $fileName ) {
@@ -209,7 +210,7 @@ class Sending {
 	 * @return stdClass
 	 * @link https://green-api.com/en/docs/api/sending/SendLink/
 	 */
-	public function sendLink( string $chatId, string $urlLink, string $quotedMessageId = null ): stdClass {
+	public function sendLink( string $chatId, string $urlLink, ?string $quotedMessageId = null ): stdClass {
 
 		$requestBody = [
 			'chatId' => $chatId,
@@ -243,10 +244,11 @@ class Sending {
 	 *
 	 * @return stdClass
 	 * @link https://green-api.com/en/docs/api/sending/SendListMessage/
+	 * @deprecated
 	 */
 	public function sendListMessage(
-		string $chatId, string $message, array $sections, string $title = null, string $footer = null,
-		string $buttonText = null, string $quotedMessageId = null, bool $archiveChat = false
+		string $chatId, string $message, array $sections, ?string $title = null, ?string $footer = null,
+		?string $buttonText = null, ?string $quotedMessageId = null, bool $archiveChat = false
 	): stdClass {
 
 		$requestBody = [
@@ -291,8 +293,8 @@ class Sending {
 	 * @link https://green-api.com/en/docs/api/sending/SendLocation/
 	 */
 	public function sendLocation(
-		string $chatId, float $latitude, float $longitude, string $nameLocation = null, string $address = null, 
-		string $quotedMessageId = null, int $typingTime = null
+		string $chatId, float $latitude, float $longitude, ?string $nameLocation = null, ?string $address = null,
+		?string $quotedMessageId = null, ?int $typingTime = null
 	): stdClass {
 
 		$requestBody = [
@@ -329,12 +331,17 @@ class Sending {
 	 * @param string $message
 	 * @param string|null $quotedMessageId
 	 * @param bool $archiveChat
+	 * @param int|null $typingTime
+	 * @param bool|null $linkPreview
+	 * @param string|null $typePreview
+	 * @param array|null $customPreview
 	 *
 	 * @return stdClass
 	 * @link https://green-api.com/en/docs/api/sending/SendMessage/
 	 */
 	public function sendMessage(
-		string $chatId, string $message, string $quotedMessageId = null, bool $archiveChat = false, int $typingTime = null
+		string $chatId, string $message, ?string $quotedMessageId = null, bool $archiveChat = false,
+		?int $typingTime = null, ?bool $linkPreview = null, ?string $typePreview = null, ?array $customPreview = null
 	): stdClass {
 
 		$requestBody = [
@@ -352,6 +359,18 @@ class Sending {
 
 		if ( $typingTime ) {
 			$requestBody['typingTime'] = $typingTime;
+		}
+
+		if ( $linkPreview !== null ) {
+			$requestBody['linkPreview'] = $linkPreview;
+		}
+
+		if ( $typePreview ) {
+			$requestBody['typePreview'] = $typePreview;
+		}
+
+		if ( $customPreview ) {
+			$requestBody['customPreview'] = $customPreview;
 		}
 
 		return $this->greenApi->request( 'POST',
@@ -375,10 +394,11 @@ class Sending {
 	 *
 	 * @return stdClass
 	 * @link https://green-api.com/en/docs/api/sending/SendTemplateButtons/
+	 * @deprecated Use sendInteractiveButtons() instead
 	 */
 	public function sendTemplateButtons(
-		string $chatId, string $message, array $templateButtons, string $footer = null,
-		string $quotedMessageId = null, bool $archiveChat = false
+		string $chatId, string $message, array $templateButtons, ?string $footer = null,
+		?string $quotedMessageId = null, bool $archiveChat = false
 	): stdClass {
 
 		$requestBody = [
@@ -414,7 +434,7 @@ class Sending {
 	 * @return stdClass
 	 * @link https://green-api.com/en/docs/api/sending/ForwardMessages/
 	 */
-	public function forwardMessages( string $chatId, string $chatIdFrom, array $messages, int $typingTime = null ): stdClass {
+	public function forwardMessages( string $chatId, string $chatIdFrom, array $messages, ?int $typingTime = null ): stdClass {
 
 		$requestBody = [
 			'chatId' => $chatId,
@@ -443,5 +463,126 @@ class Sending {
 
 		return $this->greenApi->request( 'POST_BINARY',
 			'{{media}}/waInstance{{idInstance}}/UploadFile/{{apiTokenInstance}}', null, false, null, $path );
+	}
+
+	/**
+	 * The method is aimed for sending a poll message to a personal or a group chat. The message will be added to
+	 * the send queue. Linked device not required when sending. Messages will be kept for 24 hours in the queue until
+	 * account will be authorized. The rate at which messages are sent from the queue is managed by Message sending
+	 * delay parameter.
+	 *
+	 * @param string $chatId
+	 * @param string $message
+	 * @param array $options
+	 * @param bool|null $multipleAnswers
+	 * @param string|null $quotedMessageId
+	 * @param int|null $typingTime
+	 *
+	 * @return stdClass
+	 * @link https://green-api.com/en/docs/api/sending/SendPoll/
+	 */
+	public function sendPoll(
+		string $chatId, string $message, array $options, ?bool $multipleAnswers = null,
+		?string $quotedMessageId = null, ?int $typingTime = null
+	): stdClass {
+
+		$requestBody = [
+			'chatId' => $chatId,
+			'message' => $message,
+			'options' => $options,
+		];
+
+		if ( $multipleAnswers !== null ) {
+			$requestBody['multipleAnswers'] = $multipleAnswers;
+		}
+
+		if ( $quotedMessageId ) {
+			$requestBody['quotedMessageId'] = $quotedMessageId;
+		}
+
+		if ( $typingTime ) {
+			$requestBody['typingTime'] = $typingTime;
+		}
+
+		return $this->greenApi->request( 'POST',
+			'{{host}}/waInstance{{idInstance}}/SendPoll/{{apiTokenInstance}}', $requestBody );
+	}
+
+	/**
+	 * The method is aimed for sending a message with interactive buttons to a personal or a group chat. The message
+	 * will be added to the send queue. Checking whatsapp authorization on the phone (i.e. availability in linked
+	 * devices) is not performed. The message will be kept for 24 hours in the queue and will be sent immediately
+	 * after phone authorization. The rate at which messages are sent from the queue is managed by Message sending
+	 * delay parameter.
+	 *
+	 * Button types: "copy", "call", "url". Each button requires buttonId and buttonText (max 25 chars).
+	 * For "copy" type: copyCode field. For "call" type: phoneNumber field. For "url" type: url field.
+	 * Maximum 3 buttons per message.
+	 *
+	 * @param string $chatId
+	 * @param string $body
+	 * @param array $buttons
+	 * @param string|null $header
+	 * @param string|null $footer
+	 *
+	 * @return stdClass
+	 * @link https://green-api.com/en/docs/api/sending/SendInteractiveButtons/
+	 */
+	public function sendInteractiveButtons(
+		string $chatId, string $body, array $buttons, ?string $header = null, ?string $footer = null
+	): stdClass {
+
+		$requestBody = [
+			'chatId' => $chatId,
+			'body' => $body,
+			'buttons' => $buttons,
+		];
+
+		if ( $header ) {
+			$requestBody['header'] = $header;
+		}
+
+		if ( $footer ) {
+			$requestBody['footer'] = $footer;
+		}
+
+		return $this->greenApi->request( 'POST',
+			'{{host}}/waInstance{{idInstance}}/sendInteractiveButtons/{{apiTokenInstance}}', $requestBody );
+	}
+
+	/**
+	 * The method is aimed for sending a reply message with interactive buttons to a personal or a group chat.
+	 * The message will be added to the send queue. Each button works only once.
+	 * Maximum 3 buttons per message.
+	 *
+	 * @param string $chatId
+	 * @param string $body
+	 * @param array $buttons
+	 * @param string|null $header
+	 * @param string|null $footer
+	 *
+	 * @return stdClass
+	 * @link https://green-api.com/en/docs/api/sending/SendInteractiveButtonsReply/
+	 */
+	public function sendInteractiveButtonsReply(
+		string $chatId, string $body, array $buttons, ?string $header = null, ?string $footer = null
+	): stdClass {
+
+		$requestBody = [
+			'chatId' => $chatId,
+			'body' => $body,
+			'buttons' => $buttons,
+		];
+
+		if ( $header ) {
+			$requestBody['header'] = $header;
+		}
+
+		if ( $footer ) {
+			$requestBody['footer'] = $footer;
+		}
+
+		return $this->greenApi->request( 'POST',
+			'{{host}}/waInstance{{idInstance}}/sendInteractiveButtonsReply/{{apiTokenInstance}}', $requestBody );
 	}
 }

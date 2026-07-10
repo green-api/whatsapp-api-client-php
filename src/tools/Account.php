@@ -129,4 +129,16 @@ class Account {
         return $this->greenApi->request('GET',
             '{{host}}/waInstance{{idInstance}}/getWaSettings/{{apiTokenInstance}}');
     }
+
+    /**
+     * The method is aimed for updating the instance API token. Returns a new token. The functionality is in beta
+     * mode. Functions can be changed and may also work unstably.
+     *
+     * @return stdClass
+     * @link https://green-api.com/en/docs/api/account/UpdateApiToken/
+     */
+    public function updateApiToken(): stdClass {
+        return $this->greenApi->request('GET',
+            '{{host}}/waInstance{{idInstance}}/updateApiToken/{{apiTokenInstance}}');
+    }
 }
