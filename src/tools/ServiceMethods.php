@@ -117,7 +117,7 @@ class ServiceMethods {
 	 * @return stdClass
 	 * @link https://green-api.com/en/docs/api/service/SendTyping/
 	 */
-	public function sendTyping( string $chatId, int $typingTime = null, string $typingType = null ): stdClass {
+	public function sendTyping( string $chatId, ?int $typingTime = null, ?string $typingType = null ): stdClass {
 
 		$requestBody = [
 			'chatId' => $chatId,
@@ -215,6 +215,26 @@ class ServiceMethods {
 
 		return $this->greenApi->request( 'POST',
 			'{{host}}/waInstance{{idInstance}}/SetDisappearingChat/{{apiTokenInstance}}', $requestBody );
+	}
+
+	/**
+	 * The method returns the list of chats of the current account in chronological order.
+	 *
+	 * @param int|null $count
+	 *
+	 * @return stdClass
+	 * @link https://green-api.com/en/docs/api/service/GetChats/
+	 */
+	public function getChats( ?int $count = null ): stdClass {
+
+		$requestBody = null;
+
+		if ( $count ) {
+			$requestBody['count'] = $count;
+		}
+
+		return $this->greenApi->request( 'GET',
+			'{{host}}/waInstance{{idInstance}}/getChats/{{apiTokenInstance}}', $requestBody );
 	}
 
 }

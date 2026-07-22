@@ -29,7 +29,7 @@ class Contacts
      *
      * @link https://green-api.com/en/docs/api/contacts/AddContact/
      */
-    public function addContact(string $chatId, string $firstName, string $lastName = null, bool $saveInAddressbook = true): stdClass
+    public function addContact(string $chatId, string $firstName, ?string $lastName = null, bool $saveInAddressbook = true): stdClass
     {
         $requestBody = [
             'chatId' => $chatId,
@@ -55,7 +55,7 @@ class Contacts
      *
      * @link https://green-api.com/en/docs/api/contacts/EditContact/
      */
-    public function editContact(string $chatId, string $firstName, string $lastName = null, bool $saveInAddressbook = true): stdClass
+    public function editContact(string $chatId, string $firstName, ?string $lastName = null, bool $saveInAddressbook = true): stdClass
     {
         $requestBody = [
             'chatId' => $chatId,
