@@ -27,7 +27,7 @@ class Journals
      *
      * @link https://green-api.com/en/docs/api/journals/GetChatHistory/
      */
-    public function getChatHistory(string $chatId, int $count = null): stdClass
+    public function getChatHistory(string $chatId, ?int $count = null): stdClass
     {
         $requestBody = [
             'chatId' => $chatId,
@@ -73,7 +73,7 @@ class Journals
      *
      * @link https://green-api.com/en/docs/api/journals/LastIncomingMessages/
      */
-    public function lastIncomingMessages(int $minutes = null): stdClass
+    public function lastIncomingMessages(?int $minutes = null): stdClass
     {
         $requestBody = null;
 
@@ -96,7 +96,7 @@ class Journals
      *
      * @link https://green-api.com/en/docs/api/journals/LastOutgoingMessages/
      */
-    public function lastOutgoingMessages(int $minutes = null): stdClass
+    public function lastOutgoingMessages(?int $minutes = null): stdClass
     {
         $requestBody = null;
 

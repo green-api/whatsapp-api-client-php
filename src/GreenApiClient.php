@@ -117,14 +117,14 @@ class GreenApiClient {
 	 *
 	 * @return stdClass
 	 */
-	public function request( string $method, string $url, array $payload = null, bool $is_files = false,
-		string $mime_type = null, string $path = null
+	public function request( string $method, string $url, ?array $payload = null, bool $is_files = false,
+		?string $mime_type = null, ?string $path = null
 	): stdClass {
 		$url = str_replace( '{{host}}', $this->host, $url );
         $url = str_replace( '{{media}}', $this->media, $url );
 		$url = str_replace( '{{idInstance}}', $this->idInstance, $url );
 		$url = str_replace( '{{apiTokenInstance}}', $this->apiTokenInstance, $url );
-		$url = str_replace( '{{partnerToken}}', $this->partnerToken, $url );
+		$url = str_replace( '{{partnerToken}}', $this->partnerToken ?? '', $url );
 		$method = strtoupper( $method );
 		$curl = curl_init();
 

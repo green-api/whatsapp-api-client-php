@@ -95,7 +95,7 @@ class Statuses {
 	 * @return stdClass
 	 * @link https://green-api.com/en/docs/api/statuses/GetIncomingStatuses/
 	 */
-	public function getIncomingStatuses( int $minutes = null ): stdClass {
+	public function getIncomingStatuses( ?int $minutes = null ): stdClass {
 
 		$requestBody = null;
 
@@ -116,7 +116,7 @@ class Statuses {
 	 * @return stdClass
 	 * @link https://green-api.com/en/docs/api/statuses/GetOutgoingStatuses/
 	 */
-	public function getOutgoingStatuses( int $minutes = null ): stdClass {
+	public function getOutgoingStatuses( ?int $minutes = null ): stdClass {
 
 		$requestBody = null;
 
